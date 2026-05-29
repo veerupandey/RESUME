@@ -1,0 +1,3645 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FirstRatio Imagineering - Creative Tech Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Modern Typography Pairing -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Theme - Magical Pastel Starry Sky Theme */
+            --bg-primary: #f5f4fa;
+            --bg-card: #ffffff;
+            --bg-sidebar: #eae6f5;
+            --text-primary: #1e1b4b;   /* Deep indigo */
+            --text-secondary: #4338ca; /* Indigo-700 */
+            --text-muted: #6366f1;     /* Indigo-500 */
+            --border-color: #dcd7f5;
+            --bg-pill: #eef2ff;
+            --border-pill: #c7d2fe;
+            --accent-color: #7c3aed;   /* Magical violet */
+            --accent-hover: #6d28d9;
+            --accent-light: #f5f3ff;
+            --shadow-sm: 0 1px 2px 0 rgba(124, 58, 237, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(124, 58, 237, 0.05), 0 2px 4px -2px rgba(124, 58, 237, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(124, 58, 237, 0.08), 0 4px 6px -4px rgba(124, 58, 237, 0.08);
+            --shadow-glow: 0 12px 40px -10px rgba(124, 58, 237, 0.15);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+            --header-bg: rgba(245, 244, 250, 0.85);
+            --header-border: #cbd5e1;
+            
+            /* Category Accent Defaults */
+            --cat-color: #7c3aed;
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme - Deep Magical Stardust theme */
+            --bg-primary: #08060f;     /* Magical Starry Night */
+            --bg-card: #120e22;        /* Deep amethyst slate card */
+            --bg-sidebar: #0b0816;     /* Starry slate sidebar */
+            --text-primary: #f5f3ff;    /* Lavender white */
+            --text-secondary: #c7d2fe;  /* Soft lavender */
+            --text-muted: #818cf8;      /* Sky lavender */
+            --border-color: #241d44;
+            --bg-pill: #280d5a;        /* Deep purple pill */
+            --border-pill: #5218a3;
+            --accent-color: #a78bfa;   /* Amethyst glow */
+            --accent-hover: #c4b5fd;
+            --accent-light: #441785;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.6);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 12px 45px -10px rgba(167, 139, 250, 0.32);
+            --gradient-accent: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+            --header-bg: rgba(8, 6, 15, 0.85);
+            --header-border: #20173b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            background-color: var(--bg-primary);
+            line-height: 1.5;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Starry Pulsing Background Effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 1.5px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            opacity: 0.05;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        [data-theme="dark"] body::before {
+            opacity: 0.12;
+            animation: starry-pulse 30s infinite linear;
+        }
+
+        @keyframes starry-pulse {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-550px); }
+        }
+
+        /* Interactive Pixie Dust Particle Styling */
+        .pixie-dust {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.85;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.7s ease;
+        }
+
+        /* Sticky Glassmorphism Header */
+        header {
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--header-border);
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-group h1 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-group p {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 1px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Dynamic Sound FX button switcher */
+        .sound-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            padding: 0 12px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            background-color: var(--bg-card);
+        }
+
+        .sound-btn:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            background-color: var(--bg-pill);
+            transform: translateY(-1px);
+        }
+
+        /* Theme Toggle Button */
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            background-color: var(--bg-card);
+        }
+
+        .theme-btn:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            background-color: var(--bg-pill);
+            transform: translateY(-1px);
+        }
+
+        .back-btn {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-decoration: none;
+            border: 1px solid var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            background-color: var(--bg-card);
+        }
+
+        .back-btn:hover {
+            background-color: var(--bg-pill);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            position: sticky;
+            top: 110px;
+            height: calc(100vh - 150px);
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .nav-title {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .nav-item a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 9px 12px;
+            border-radius: 8px;
+        }
+
+        .nav-item a:hover, .nav-item.active a {
+            color: var(--accent-color);
+            background-color: var(--bg-pill);
+            font-weight: 600;
+        }
+
+        .nav-label-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-counter {
+            font-size: 11px;
+            font-weight: 600;
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            padding: 1px 6px;
+            border-radius: 8px;
+        }
+
+        /* Portfolio Content */
+        .content-section {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* Premium Glassmorphic Hero Castle Banner Section */
+        .hero-banner {
+            position: relative;
+            background-image: url('imagineering_banner.png');
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(8, 6, 15, 0.95) 0%, rgba(20, 15, 38, 0.72) 100%);
+            z-index: 1;
+        }
+
+        [data-theme="light"] .hero-overlay {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 235, 250, 0.85) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h2 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            margin-bottom: 20px;
+            max-width: 850px;
+            text-align: justify;
+        }
+
+        .hero-glass-box {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 16px;
+        }
+
+        [data-theme="light"] .hero-glass-box {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(124, 58, 237, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .hero-glass-box p {
+            margin-bottom: 0;
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        /* Highly Interactive Blueprint Console */
+        .blueprint-console {
+            background-color: #04020a;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 16px;
+            margin-top: 20px;
+            box-shadow: inset 0 0 12px rgba(167, 139, 250, 0.12), var(--shadow-md);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .console-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 8px;
+        }
+
+        .console-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .console-dot.red { background-color: #ef4444; }
+        .console-dot.yellow { background-color: #eab308; }
+        .console-dot.green { background-color: #22c55e; }
+
+        .console-title {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 8px;
+            font-weight: bold;
+        }
+
+        .console-body {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #38bdf8; /* Cyan */
+            height: 110px;
+            overflow-y: hidden;
+        }
+
+        .console-line {
+            display: block;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid transparent;
+            font-weight: 500;
+        }
+
+        /* Key Metrics / Stats Widgets with Bobbing Animations */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 18px 16px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: float-bob 6s ease-in-out infinite;
+        }
+
+        .stat-card:nth-child(2) { animation-delay: 1.5s; }
+        .stat-card:nth-child(3) { animation-delay: 3s; }
+        .stat-card:nth-child(4) { animation-delay: 4.5s; }
+
+        @keyframes float-bob {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .stat-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+        }
+
+        .stat-num {
+            font-family: var(--font-heading);
+            font-size: 30px;
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-family: var(--font-heading);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .stat-sub {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        /* Search & Custom Interactive Filter Bar */
+        .toolbar {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            position: sticky;
+            top: 85px;
+            z-index: 90;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 11px 16px 11px 40px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px var(--accent-light);
+            background-color: var(--bg-card);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .filter-pills {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .filter-pill {
+            font-family: var(--font-heading);
+            font-size: 12.5px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            padding: 5px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .filter-pill:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background-color: var(--bg-pill);
+        }
+
+        .filter-pill.active {
+            color: #ffffff;
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .category-group {
+            margin-top: 8px;
+            position: relative;
+        }
+
+        /* Imagineering Accents Scoping */
+        #pe-diligence { --cat-color: #818cf8; }        /* Amethyst Aura */
+        #operations { --cat-color: #38bdf8; }         /* Magic Sky Blue */
+        #finance-erp { --cat-color: #34d399; }         /* Emerald Glow */
+        #industrial { --cat-color: #fbbf24; }          /* Pixie Dust Gold */
+        #infrastructure { --cat-color: #c084fc; }      /* Purple Portal */
+        #reusable-skills { --cat-color: #f472b6; }     /* Pink Radiance */
+        #efficiency { --cat-color: #2dd4bf; }          /* Teal Aurora */
+
+        .category-header {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--cat-color);
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category-header span {
+            font-size: 12px;
+            font-weight: 600;
+            background-color: var(--bg-pill);
+            color: var(--cat-color);
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-left: 12px;
+            border: 1px solid var(--border-pill);
+        }
+
+        /* Highly Immersive 3D Floating Category Banners */
+        .realm-banner-card {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            height: 200px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            animation: float-bob 8s ease-in-out infinite;
+        }
+
+        .realm-banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 25%;
+            filter: saturate(1.1);
+        }
+
+        .realm-banner-card:hover .realm-banner-img {
+            transform: scale(1.03);
+        }
+
+        .realm-banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(8, 6, 15, 0.95) 0%, rgba(20, 15, 38, 0.3) 100%);
+            z-index: 1;
+        }
+
+        [data-theme="light"] .realm-banner-overlay {
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(240, 235, 250, 0.4) 100%);
+        }
+
+        .realm-banner-text {
+            position: absolute;
+            left: 28px;
+            bottom: 28px;
+            z-index: 2;
+            max-width: 65%;
+        }
+
+        .realm-banner-text h3 {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .realm-banner-text p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* Project Card Styling */
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--cat-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .project-title {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-badge {
+            font-size: 10.5px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge.built, .status-badge.shipped, .status-badge.deployed {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-badge.active {
+            background-color: #fef9c3;
+            color: #854d0e;
+        }
+
+        .status-badge.discovery {
+            background-color: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        .status-badge.paused {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 6px 16px;
+            background-color: var(--bg-primary);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 18px;
+            font-size: 12.5px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .meta-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .meta-value {
+            color: var(--text-primary);
+        }
+
+        .project-block-title {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--cat-color);
+            margin-top: 14px;
+            margin-bottom: 6px;
+        }
+
+        .project-text {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .highlight-text {
+            color: var(--cat-color);
+            font-weight: 600;
+        }
+
+        /* Custom styled lists */
+        .project-card ul {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .project-card li {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        /* Card Button Trigger overlaying modal */
+        .explore-blueprint-btn {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--cat-color);
+            background: none;
+            border: 1px solid var(--cat-color);
+            border-radius: 6px;
+            padding: 4px 10px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .explore-blueprint-btn:hover {
+            color: #ffffff;
+            background-color: var(--cat-color);
+            box-shadow: 0 0 10px var(--cat-color);
+        }
+
+        /* Custom styled tables inside project cards */
+        .project-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            margin: 16px 0;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .project-table th, .project-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            text-align: left;
+        }
+
+        .project-table th {
+            background-color: var(--bg-primary);
+            font-weight: 600;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .project-table td {
+            color: var(--text-secondary);
+        }
+
+        .project-table tr:nth-child(even) td {
+            background-color: var(--bg-primary);
+        }
+
+        /* Stack Tech Pills */
+        .stack-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .stack-pill {
+            font-size: 11px;
+            font-weight: 500;
+            background-color: var(--bg-pill);
+            color: var(--accent-color);
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--border-pill);
+        }
+
+        /* ==========================================
+        /* BLUEPRINT HOLOGRAPHIC MODAL OVERLAY STYLES
+        /* ========================================== */
+        .blueprint-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+            background-color: rgba(6, 4, 11, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            padding: 40px 24px;
+        }
+
+        .blueprint-modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .blueprint-modal-content {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            max-width: 1050px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: var(--shadow-glow);
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        }
+
+        .blueprint-modal.active .blueprint-modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .close-modal:hover {
+            color: #ef4444;
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.05);
+            transform: rotate(90deg);
+        }
+
+        .blueprint-workspace {
+            padding: 40px;
+        }
+
+        .blueprint-workspace-header {
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+
+        .blueprint-workspace-header h2 {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            margin-top: 4px;
+        }
+
+        .blueprint-header-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .blueprint-layout-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 40px;
+        }
+
+        .blueprint-graphic-panel {
+            position: relative;
+            height: 420px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: #04020a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 0 20px rgba(167, 139, 250, 0.1);
+        }
+
+        .modal-hologram-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            animation: hologram-glitch 5s infinite linear;
+        }
+
+        .modal-hologram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%);
+            pointer-events: none;
+        }
+
+        .modal-glow-light {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+            filter: blur(10px);
+        }
+
+        @keyframes hologram-glitch {
+            0% { filter: hue-rotate(0deg) contrast(1); }
+            50% { filter: hue-rotate(5deg) contrast(1.05); }
+            100% { filter: hue-rotate(0deg) contrast(1); }
+        }
+
+        .blueprint-specs-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: 480px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .blueprint-spec-block {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .blueprint-spec-tag {
+            font-family: var(--font-heading);
+            font-size: 11.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .blueprint-spec-text {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            text-align: justify;
+            line-height: 1.5;
+        }
+
+        /* Back to Top button */
+        .top-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background-color: var(--text-primary);
+            color: var(--bg-card);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            font-size: 18px;
+            z-index: 100;
+            border: 1px solid var(--border-color);
+        }
+
+        .top-btn:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 950px) {
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            aside {
+                display: none;
+            }
+            .toolbar {
+                position: static;
+                margin-bottom: 8px;
+            }
+            .hero-banner {
+                padding: 24px;
+            }
+            .blueprint-layout-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .blueprint-graphic-panel {
+                height: 250px;
+            }
+            .blueprint-specs-panel {
+                height: auto;
+                overflow-y: visible;
+            }
+        }
+
+        /* GEEK SYSTEMS HUD CUSTOM DIALS */
+        .hud-specs {
+            display: none;
+            margin-top: 14px;
+            padding: 10px 14px;
+            background-color: rgba(56, 189, 248, 0.04);
+            border: 1px dashed rgba(56, 189, 248, 0.3);
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11.5px;
+            color: #38bdf8;
+            animation: pulse-hud-border 2.5s infinite ease-in-out;
+            line-height: 1.55;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.03);
+        }
+
+        [data-theme="light"] .hud-specs {
+            background-color: rgba(124, 58, 237, 0.03);
+            border-color: rgba(124, 58, 237, 0.2);
+            color: #7c3aed;
+        }
+
+        body.hud-active .hud-specs {
+            display: block;
+        }
+
+        @keyframes pulse-hud-border {
+            0% { border-color: rgba(56, 189, 248, 0.25); box-shadow: 0 0 2px rgba(56, 189, 248, 0.05); }
+            50% { border-color: rgba(56, 189, 248, 0.65); box-shadow: 0 0 8px rgba(56, 189, 248, 0.2); }
+            100% { border-color: rgba(56, 189, 248, 0.25); box-shadow: 0 0 2px rgba(56, 189, 248, 0.05); }
+        }
+
+        body.hud-active::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 999;
+            pointer-events: none;
+            animation: flicker-hud 6s infinite ease-in-out;
+        }
+
+        /* Scanline Overlay on HUD mode */
+        body.hud-active::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%), linear-gradient(90deg, rgba(56, 189, 248, 0.02), rgba(167, 139, 250, 0.01), rgba(56, 189, 248, 0.02));
+            background-size: 100% 4px, 6px 100%;
+            z-index: 998;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+
+        @keyframes flicker-hud {
+            0% { opacity: 0.75; }
+            50% { opacity: 0.95; }
+            100% { opacity: 0.75; }
+        }
+
+            .blueprint-graphic-panel::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: rgba(56, 189, 248, 0.6);
+                box-shadow: 0 0 10px 2px rgba(56, 189, 248, 0.8);
+                animation: hologram-scan 3.5s infinite linear;
+                z-index: 5;
+                pointer-events: none;
+            }
+
+            @keyframes hologram-scan {
+                0% { top: 0%; }
+                100% { top: 100%; }
+            }
+
+            @keyframes pulse-node {
+                0% { transform: scale(1); opacity: 0.8; }
+                50% { transform: scale(1.25); opacity: 1; }
+                100% { transform: scale(1); opacity: 0.8; }
+            }
+
+            .flow-center-dot {
+                transform-origin: center;
+            }
+
+            @keyframes flow-packet {
+                to { stroke-dashoffset: -28; }
+            }
+
+            /* Ticking dial styling keyframe and telemetry blinker */
+            @keyframes blink {
+                0% { opacity: 0.4; }
+                100% { opacity: 1; }
+            }
+
+            /* Synth wave button dynamic styling */
+            .synth-wave-btn {
+                transition: all 0.2s ease;
+            }
+            .synth-wave-btn.active {
+                background-color: #38bdf8 !important;
+                border-color: #38bdf8 !important;
+                color: #04020a !important;
+                font-weight: 700;
+                box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+            }
+        </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <header id="top">
+        <div class="header-container">
+            <div class="logo-group">
+                <h1>Rakesh Pandey</h1>
+                <p>Principal AI Architect & Imagineer</p>
+            </div>
+            <div class="header-actions">
+                <!-- Sound Toggle -->
+                <button id="sound-toggle" class="sound-btn" aria-label="Toggle sound FX">
+                    <svg class="sound-on-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    </svg>
+                    <svg class="sound-off-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                    </svg>
+                    <span id="sound-status-text" style="font-size: 11px; font-weight: 600; margin-left: 6px; font-family: var(--font-heading); text-transform: uppercase;">Sound: OFF</span>
+                </button>
+                <!-- Geek HUD Mode Switch -->
+                <button id="hud-toggle" class="sound-btn" aria-label="Toggle Systems Diagnostics HUD" style="border-color: #38bdf8; color: #38bdf8;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                    <span id="hud-status-text" style="font-size: 11px; font-weight: 600; margin-left: 6px; font-family: var(--font-heading); text-transform: uppercase;">GEEK HUD: OFF</span>
+                </button>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                    <!-- Light Mode (Sun) Icon -->
+                    <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <!-- Dark Mode (Moon) Icon -->
+                    <svg class="moon-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="Resume_Rakesh_Pandey_202605.pdf" class="back-btn" target="_blank">View Resume</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar Navigation -->
+        <aside>
+            <div class="nav-title">Attraction Realms</div>
+            <ul class="nav-list">
+                <li class="nav-item active" id="nav-pe-diligence">
+                    <a href="#pe-diligence">
+                        <span class="nav-label-group">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px; vertical-align: middle; color: #818cf8;">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            PE Intelligence Expeditions
+                        </span>
+                        <span class="nav-counter">4</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="nav-operations">
+                    <a href="#operations">
+                        <span class="nav-label-group">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px; vertical-align: middle; color: #38bdf8;">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                            Operational Automation Enclaves
+                        </span>
+                        <span class="nav-counter">5</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="nav-finance-erp">
+                    <a href="#finance-erp">
+                        <span class="nav-label-group">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px; vertical-align: middle; color: #34d399;">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            Ledger & Finance Centers
+                        </span>
+                        <span class="nav-counter">3</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="nav-industrial">
+                    <a href="#industrial">
+                        <span class="nav-label-group">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px; vertical-align: middle; color: #fbbf24;">
+                                <path d="M2 20h20M5 17V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12"></path>
+                                <path d="M9 17v-4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4"></path>
+                            </svg>
+                            Heavy Industrial Control
+                        </span>
+                        <span class="nav-counter">2</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="nav-infrastructure">
+                    <a href="#infrastructure">
+                        <span class="nav-label-group">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px; vertical-align: middle; color: #c084fc;">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                            </svg>
+                            Agent Fleet & Memory Nexus
+                        </span>
+                        <span class="nav-counter">5</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="nav-reusable-skills">
+                    <a href="#reusable-skills">
+                        <span class="nav-label-group">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px; vertical-align: middle; color: #f472b6;">
+                                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1 0-3.12 3 3 0 0 1 0-4.88 2.5 2.5 0 0 1 0-3.12A2.5 2.5 0 0 1 9.5 2zM14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 0-3.12 3 3 0 0 0 0-4.88 2.5 2.5 0 0 0 0-3.12A2.5 2.5 0 0 0 14.5 2z"></path>
+                            </svg>
+                            Imagineering Tooling & Enablers
+                        </span>
+                        <span class="nav-counter">3</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="nav-efficiency">
+                    <a href="#efficiency">
+                        <span class="nav-label-group">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px; vertical-align: middle; color: #2dd4bf;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            SaaS & Spend Rationalization
+                        </span>
+                        <span class="nav-counter">1</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Cockpit Telemetry Panel (GEEK HUD active) -->
+            <div class="telemetry-panel" style="margin-top: 32px; padding: 20px 16px; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; box-shadow: var(--shadow-sm); display: none;">
+                <div style="font-family: var(--font-heading); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-color); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #ef4444; animation: blink 1s infinite alternate;" id="telemetry-pulse"></span>
+                    COCKPIT TELEMETRY
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <!-- Gauge 1: CPU -->
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <svg width="45" height="45" viewBox="0 0 36 36">
+                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--border-color)" stroke-width="2.5" />
+                            <path id="cpu-dial" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="0, 100" style="transition: stroke-dasharray 0.3s ease;" />
+                            <text x="18" y="21.5" text-anchor="middle" font-family="monospace" font-size="8px" fill="var(--text-primary)" font-weight="bold" id="cpu-dial-txt">0%</text>
+                        </svg>
+                        <div>
+                            <div style="font-size: 11px; font-weight: 700; color: var(--text-primary);">CPU Core Load</div>
+                            <div style="font-size: 9px; color: var(--text-muted); font-family: monospace;">Scale: 16 Active Cores</div>
+                        </div>
+                    </div>
+                    <!-- Gauge 2: Active Agents -->
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <svg width="45" height="45" viewBox="0 0 36 36">
+                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--border-color)" stroke-width="2.5" />
+                            <path id="agent-dial" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#34d399" stroke-width="2.5" stroke-dasharray="0, 100" style="transition: stroke-dasharray 0.3s ease;" />
+                            <text x="18" y="21.5" text-anchor="middle" font-family="monospace" font-size="8px" fill="var(--text-primary)" font-weight="bold" id="agent-dial-txt">0</text>
+                        </svg>
+                        <div>
+                            <div style="font-size: 11px; font-weight: 700; color: var(--text-primary);">Active Thread Fleet</div>
+                            <div style="font-size: 9px; color: var(--text-muted); font-family: monospace;">Scale: Docker Swarm</div>
+                        </div>
+                    </div>
+                    <!-- Gauge 3: Memory Graph -->
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <svg width="45" height="45" viewBox="0 0 36 36">
+                            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="var(--border-color)" stroke-width="2.5" />
+                            <path id="memory-dial" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-dasharray="0, 100" style="transition: stroke-dasharray 0.3s ease;" />
+                            <text x="18" y="21.5" text-anchor="middle" font-family="monospace" font-size="8px" fill="var(--text-primary)" font-weight="bold" id="memory-dial-txt">0%</text>
+                        </svg>
+                        <div>
+                            <div style="font-size: 11px; font-weight: 700; color: var(--text-primary);">Memory Graph Heap</div>
+                            <div style="font-size: 9px; color: var(--text-muted); font-family: monospace;">Scale: Honcho Postgres</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Portfolio Content -->
+        <main class="content-section">
+            <!-- Premium Glassmorphic Hero Castle Banner -->
+            <div class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <h2>FirstRatio Imagineering — Creative Tech Portfolio</h2>
+                    <p>Welcome to my detailed projects portfolio as Cofounder &amp; Principal AI Engineer of <strong>FirstRatio Intelligence</strong>. In this space, we merge <strong>Imagination</strong> and <strong>Engineering</strong> (Imagineering) to design, blueprint, and orchestrate production-grade agent fleets, vertical automation attractions, and core platform infrastructure for private equity firms, holding companies, and enterprises.</p>
+                    
+                    <div class="hero-glass-box">
+                        <p>Browse our attraction disciplines in the sidebar, or use the portal control panel below to filter the 23 active deployments by phase (Active Attraction, Prototype Phase, or Blueprint Hopper).</p>
+                    </div>
+
+                    <!-- Highly Interactive Blueprint Console -->
+                    <div class="blueprint-console">
+                        <div class="console-header">
+                            <span class="console-dot red"></span>
+                            <span class="console-dot yellow"></span>
+                            <span class="console-dot green"></span>
+                            <span class="console-title">Imagineering Fleet Diagnostics &amp; Blueprints</span>
+                            <span style="margin-left: auto; font-size: 9px; color: #818cf8; font-weight: bold; background: rgba(129, 140, 248, 0.1); padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px;">SECURE CLI DOCK</span>
+                        </div>
+                        <div class="console-body" id="console-output">
+                            <!-- Typing Terminal lines inject dynamically -->
+                        </div>
+                        <div class="console-input-line" style="display: flex; align-items: center; gap: 8px; margin-top: 8px; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 8px;">
+                            <span style="color: #a78bfa; font-weight: bold; font-size: 12px; font-family: 'Courier New', monospace;">imagineer@firstratio:~$</span>
+                            <input type="text" id="console-user-input" placeholder="Type /help, /diagnose, /dream, /sysinfo, /pod or click a card..." style="background: none; border: none; outline: none; color: #38bdf8; font-family: 'Courier New', monospace; font-size: 12px; width: 100%;" />
+                        </div>
+                        
+                        <!-- High-Tech Sound Synthesis Control Panel -->
+                        <div class="synth-control-panel" style="display: flex; align-items: center; gap: 16px; margin-top: 10px; border-top: 1px dashed rgba(56, 189, 248, 0.25); padding-top: 8px; font-family: monospace; font-size: 10.5px; color: #818cf8; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span>WAVEFORM:</span>
+                                <div style="display: flex; gap: 4px;">
+                                    <button class="synth-wave-btn active" data-wave="sine" style="background: rgba(129, 140, 248, 0.1); border: 1px solid #818cf8; color: #818cf8; font-size: 9px; padding: 2px 6px; border-radius: 4px; cursor: pointer;">SINE</button>
+                                    <button class="synth-wave-btn" data-wave="triangle" style="background: none; border: 1px solid rgba(129, 140, 248, 0.3); color: var(--text-muted); font-size: 9px; padding: 2px 6px; border-radius: 4px; cursor: pointer;">TRI</button>
+                                    <button class="synth-wave-btn" data-wave="sawtooth" style="background: none; border: 1px solid rgba(129, 140, 248, 0.3); color: var(--text-muted); font-size: 9px; padding: 2px 6px; border-radius: 4px; cursor: pointer;">SAW</button>
+                                    <button class="synth-wave-btn" data-wave="square" style="background: none; border: 1px solid rgba(129, 140, 248, 0.3); color: var(--text-muted); font-size: 9px; padding: 2px 6px; border-radius: 4px; cursor: pointer;">SQR</button>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px; flex-grow: 1; max-width: 250px;">
+                                <span>PITCH:</span>
+                                <input type="range" id="synth-pitch" min="220" max="1100" value="523" style="width: 100%; height: 4px; background: rgba(56, 189, 248, 0.2); border-radius: 2px; outline: none; cursor: pointer; accent-color: #38bdf8;" />
+                                <span id="synth-pitch-val" style="color: #38bdf8; min-width: 45px;">523Hz</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span>VOLUME:</span>
+                                <input type="range" id="synth-gain" min="0" max="10" value="5" style="width: 60px; height: 4px; background: rgba(56, 189, 248, 0.2); border-radius: 2px; outline: none; cursor: pointer; accent-color: #38bdf8;" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-num">23</div>
+                            <div class="stat-label">Attractions Engineered</div>
+                            <div class="stat-sub">Across 7 Imagineering sectors</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">12</div>
+                            <div class="stat-label">Active Attractions</div>
+                            <div class="stat-sub">In live, active production usage</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">11</div>
+                            <div class="stat-label">Blueprints & Prototypes</div>
+                            <div class="stat-sub">Active hopper pipeline & pilot phases</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-num">8</div>
+                            <div class="stat-label">Fleet Nodes</div>
+                            <div class="stat-sub">Distributed system secured via Tailscale</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sticky Toolbar (Search + Filters) -->
+            <div class="toolbar">
+                <div class="search-wrapper">
+                    <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="search-input" class="search-input" placeholder="Search attractions by blueprint keywords, realm, phase, or magic components...">
+                </div>
+                <div class="filter-group">
+                    <span class="filter-label">Filter:</span>
+                    <div class="filter-pills">
+                        <button class="filter-pill active" data-filter="all">All Attractions</button>
+                        <button class="filter-pill" data-filter="built-deployed">Active Attractions</button>
+                        <button class="filter-pill" data-filter="active">Prototype Phase</button>
+                        <button class="filter-pill" data-filter="discovery-scoped">Blueprints & Hopper</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1. PE / M&A Due Diligence -->
+            <div class="category-group" id="pe-diligence">
+                <div class="category-header">
+                    PE Intelligence Expeditions
+                    <span>4 Projects</span>
+                </div>
+
+                <!-- Category Isometric Banner -->
+                <div class="realm-banner-card">
+                    <img src="pe_diligence_realm.png" alt="PE Intelligence Expeditions Realm" class="realm-banner-img">
+                    <div class="realm-banner-overlay"></div>
+                    <div class="realm-banner-text">
+                        <h3>PE Intelligence Expeditions</h3>
+                        <p>Ingesting, indexing, and auditing high-stakes target data rooms with taxonomic precision.</p>
+                    </div>
+                </div>
+
+                <!-- Project 1.1 -->
+                <div class="project-card" data-status="built">
+                    <div class="project-title">
+                        PE Data Room Intelligence System
+                        <span class="status-badge built">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Private investment / M&A</span>
+                        <span class="meta-label">Mission Scope:</span>
+                        <span class="meta-value">Repeatable reuse across multi-deal holding company deal flow</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Private Equity diligence teams need to rapidly ingest, catalog, and synthesize massive heterogeneous deal data rooms. Generic, document-agnostic Retrieval-Augmented Generation (RAG) treats financial statements and contracts as undifferentiated text. True M&A due diligence is a structured discipline requiring taxonomic mapping, domain-specific query patterns, and precise gap analysis against expected target documents at distinct deal stages.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Led a team of <span class="highlight-text">software and data engineers</span> to design, build, and deploy a highly reusable agentic search and RAG harness deployed across three active data rooms: a PE-backed industrial services platform, an engineering controls integrator target, and an air pollution controls manufacturer target. The system implements a target metadata schema that isolates deals and maps data to a normalized taxonomy.</p>
+
+                    <div class="project-block-title">Taxonomy & Metadata Schema</div>
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>deal_id</code></td>
+                                <td>Absolute deal isolation at database/index level</td>
+                            </tr>
+                            <tr>
+                                <td>Normalized DD Section</td>
+                                <td>12-section taxonomy: Finance, Commercial, Operations, Legal, HR, Technology, Environmental, Insurance, Tax, and four others</td>
+                            </tr>
+                            <tr>
+                                <td><code>doc_type</code></td>
+                                <td>Categorizes as financial_statement, contract, legal_doc, operational, correspondence</td>
+                            </tr>
+                            <tr>
+                                <td>Temporal fields</td>
+                                <td><code>period_end</code> for accounting statements; <code>document_date</code> for contracts</td>
+                            </tr>
+                            <tr>
+                                <td>Source path</td>
+                                <td>Deterministic file link back to OneDrive or Google Drive</td>
+                            </tr>
+                            <tr>
+                                <td>Chunk context</td>
+                                <td>Classifies text type: table vs. prose vs. header, including native page numbers</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="project-block-title">Query Workflows Automated</div>
+                    <ul>
+                        <li><strong>Factual extraction:</strong> Automated gathering of EBITDA calculations, lease expirations, and key customer contract terms.</li>
+                        <li><strong>Semantic search:</strong> Advanced discovery of customer concentration risks, change-of-control provisions, and environmental exposures.</li>
+                        <li><strong>Cross-document synthesis:</strong> Correlating financial health markers across Quality of Earnings (QoE) reports, audited statements, and management presentations.</li>
+                        <li><strong>Cross-deal comparison:</strong> Benchmarking margin profiles or working capital intensity across the historical acquisition pipeline.</li>
+                        <li><strong>Diligence tracking:</strong> Identifying which expected document categories from a canonical checklist remain unfulfilled by the seller.</li>
+                    </ul>
+
+                    <div class="project-block-title">The Blueprint (Architecture)</div>
+                    <p class="project-text">Executed in three major phases: (1) Ingestion, chunking, and embedding pipelines into a vector index; (2) Structured financial metrics extraction and automatic document gap analysis; (3) Intelligence layer generating cross-deal comparisons and automated DD summary memo drafts. Scoped and tracked across sixteen Linear issues with priority markers.</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Python</span>
+                        <span class="stack-pill">Unstructured.io</span>
+                        <span class="stack-pill">pdfplumber (table-aware PDF parsing)</span>
+                        <span class="stack-pill">Pinecone</span>
+                        <span class="stack-pill">Hybrid Retrieval (Semantic + Metadata Filters)</span>
+                        <span class="stack-pill">Claude 4.0 Sonnet & Opus 4.6</span>
+                        <span class="stack-pill">n8n Orchestration</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 1.2 -->
+                <div class="project-card" data-status="built">
+                    <div class="project-title">
+                        Planner–Generator–Evaluator Diligence Harness
+                        <span class="status-badge built">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Private investment / M&A</span>
+                        <span class="meta-label">Operational Link:</span>
+                        <span class="meta-value">Sits directly on top of the PE Data Room Intelligence System</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Unlike software engineering—where a compiler serves as a cheap mechanical oracle for incorrect syntax—due diligence has no mechanical compiler. Large Language Models can easily produce highly fluent, professionally formatted investment committee (IC) memos that are subtly wrong on margin trajectories, customer concentration math, or working capital normalizations, leading to silent, high-impact analytical failures.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Led a team of <span class="highlight-text">AI/ML and software engineers</span> to design, build, and deploy a robust three-role **Planner–Generator–Evaluator** pattern. The Evaluator implements an opposing-oracle pattern (adapted from John Regehr's <em>Zero Degrees of Freedom</em> framework for differential software testing). Every single claim made in a generated diligence memo must reconcile against a verified, independent precision oracle: the Excel deal model, an interview transcript citation, or a raw source document from the deal room.</p>
+
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>Role</th>
+                                <th>Responsibility</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Planner</strong></td>
+                                <td>Establishes analytical structure for a specific target — sections, cross-tabs, and relevant cohort comparison sets.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Generator</strong></td>
+                                <td>Drafts memo content dynamically from indexed data rooms and historical model spreadsheets.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Evaluator</strong></td>
+                                <td>Runs every draft claim through strict completeness, precision, and logical coherence checklists.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="project-block-title">Evaluator Checks</div>
+                    <ul>
+                        <li><strong>Completeness:</strong> Memo covers every required section and appendix of the canonical IC template.</li>
+                        <li><strong>Precision:</strong> Every financial figure ties deterministically to a verified source document or Excel deal cell.</li>
+                        <li><strong>Coherence:</strong> Every management claim or operational narrative cites an actual interview transcript or signed document.</li>
+                    </ul>
+                    <p class="project-text" style="margin-top: 10px;">Reconciliation failures are routed back to the generator with explicit, machine-readable deltas to correct and redraft.</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Python Orchestration</span>
+                        <span class="stack-pill">Claude Opus 4.6 (Generator)</span>
+                        <span class="stack-pill">Claude 4.0 Sonnet (Evaluator)</span>
+                        <span class="stack-pill">Deterministic ID Mapping</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 1.3 -->
+                <div class="project-card" data-status="built">
+                    <div class="project-title">
+                        Management Debt Scoring Rubric
+                        <span class="status-badge built">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Private investment / M&A</span>
+                        <span class="meta-label">Operational Link:</span>
+                        <span class="meta-value">Embedded natively inside the Diligence Harness</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Management debt in middle-market target acquisitions is frequently discussed qualitatively in investor reports, but is rarely priced systematically. PE teams require a structured, interview-driven framework that quantifies organizational friction and produces a numerical input for the Excel deal model.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Directed a team of <span class="highlight-text">software and data engineers</span> to deploy a structured evaluator running against management transcripts, parsing seller responses, mapping answers to known debt indicators, and outputting a 0-10 score per dimension. The composite score maps directly to a basis-point adjustment on the target offer price. Verbatim quotes are automatically cited as supporting evidence. If a dimension is not adequately probed, a target follow-up question list is automatically generated for the deal team.</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Structured Evaluator Engine</span>
+                        <span class="stack-pill">Transcripts Parsing Pipeline</span>
+                        <span class="stack-pill">Claude 4.0 Sonnet</span>
+                        <span class="stack-pill">Excel Model Bridging</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 1.4 -->
+                <div class="project-card" data-status="built">
+                    <div class="project-title">
+                        AI Video Pipeline Technical Diligence
+                        <span class="status-badge built">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Media / AI-Native Acquisition Target</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Completed Diligence Assessment Report</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Conduct technical due diligence of an AI-driven feature film production slated for the Indian theatrical market—a mythological epic with IMAX-tier delivery ambitions. The target's pitch deck made four highly ambitious technical claims; diligence was required to evaluate each claim against actual engineering realities and the current market state.</p>
+                    
+                    <div class="project-block-title">Claims Assessed & Findings</div>
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>Claim</th>
+                                <th>Diligence Finding</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>32-bit EXR pipeline</strong></td>
+                                <td>Real infrastructure, but meaningful only if the base generator outputs High Dynamic Range (HDR). Since ComfyUI defaults to 8-bit, the Radiance plugin is required to maintain IEEE 754 fp32 data throughout the chain. Non-HDR models wrapping 8-bit plates inside a 32-bit container add no dynamic range. At present, only Luma Ray3 and LTX LumidVid output scene-linear fp16/HDR EXR; Sora 2, Kling 3.0, and Veo 3.1 do not output native HDR.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IMAX-compatible outputs</strong></td>
+                                <td>Ambiguous. Aspect ratio cropping (1.43:1 or 1.90:1) is trivial, but matching IMAX pixel counts and XYZ color spaces at theatrical master specs (DCP 12-bit JPEG 2000 XYZ) is the bottleneck. Full 32-bit is unnecessary for theatrical delivery; the pipeline simply benefits from fp32 working space with a clean dither down at final DCP encode.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multi-language lip-sync</strong></td>
+                                <td>Highly commoditized capability easily executed via public Sync Labs, HeyGen, and ElevenLabs APIs. No proprietary technology moat.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ComfyUI motion reference</strong></td>
+                                <td>Relies on standard open-source tools (AnimateDiff, ControlNet video, motion LoRAs). Represents competent execution, not a proprietary workflow moat.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Unaddressed Risks</strong></td>
+                                <td>Identified character consistency at feature-length as the key unaddressed technical failure mode that stalled prior Indian AI cinematic series (e.g. JioHotstar).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="project-block-title">Diligence Questions Generated</div>
+                    <ul>
+                        <li>Which base models generate the raw plates and what are the per-shot economics?</li>
+                        <li>Does the 32-bit handling rely on fxtdstudios Radiance or a custom OCIO configuration?</li>
+                        <li>What is the upconvert and color-grading process for plates coming from non-HDR native generators (e.g., dark scenes, firelight)?</li>
+                        <li>A/B test the Mahabharata-equivalent assets on a calibrated HDR reference monitor through Ray3 vs. Seedance vs. Wan.</li>
+                    </ul>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+            </div>
+
+            <!-- 2. Operations & Vertical Workflow Automation -->
+            <div class="category-group" id="operations">
+                <div class="category-header">
+                    Operational Automation Enclaves
+                    <span>5 Projects</span>
+                </div>
+
+                <!-- Category Isometric Banner -->
+                <div class="realm-banner-card">
+                    <img src="operations_realm.png" alt="Operational Automation Realm" class="realm-banner-img">
+                    <div class="realm-banner-overlay"></div>
+                    <div class="realm-banner-text">
+                        <h3>Operational Automation Enclaves</h3>
+                        <p>Deploying conversational co-pilots and cloud browser automations to streamline heavy workflows.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2.1 -->
+                <div class="project-card" data-status="built">
+                    <div class="project-title">
+                        Musitrust LLC Music Distribution Agent
+                        <span class="status-badge built">Active Attraction (FirstRatio Flagship)</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Music Tech / Independent Artist Commerce / Operations</span>
+                        <span class="meta-label">Venture Link:</span>
+                        <span class="meta-value">Flagship Client Project under FirstRatio Intelligence</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Independent musicians face complex, highly fragmented loops when attempting to optimize, catalog, and distribute their music to global streaming platforms. Coordinating artwork specs, tracking audio dynamic range, mapping metadata taxonomy (such as ISRCs, genres, and artist credits), and executing copyright clearances require substantial manual labor and technical knowledge, frequently delaying distribution and revenue cycles.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Designed, architected, and <span class="highlight-text">led a multidisciplinary team of software, AI/ML, and platform engineers</span> to build and deploy an advanced agent-driven chatbot platform that completely automates the music distribution workflow. The system acts as a conversational co-pilot guiding independent musicians through the end-to-end publishing lifecycle:</p>
+                    <ul>
+                        <li><strong>Audio Ingestion &amp; Parameter Optimization:</strong> Takes raw music files, validates audio quality and sample rates, and applies automated enhancement and dynamic range mastering using <span class="highlight-text">FFmpeg</span> and <span class="highlight-text">Librosa</span>.</li>
+                        <li><strong>Dynamic Metadata Harvesting:</strong> Prompts the artist interactively, automatically validating metadata standards (ISRCs, UPCs, songwriters), recommending optimized genres, and parsing natural language into a highly structured publishing schema.</li>
+                        <li><strong>Automated Copyright Verification:</strong> Integrates custom fingerprinting APIs to execute real-time copyright checks and ensure original work is fully protected and verified against legal liabilities.</li>
+                        <li><strong>Multi-Platform Distribution:</strong> Leverages specialized distribution gateways to simultaneously deliver optimized files and metadata to Spotify, Apple Music, YouTube Music, and global platforms upon final user permission.</li>
+                        <li><strong>Revenue &amp; Analytics Dashboard:</strong> Ingests post-distribution streaming data to track and report artist revenues and track performative growth within a unified, interactive console.</li>
+                    </ul>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Python Orchestration</span>
+                        <span class="stack-pill">Conversational Agent Runtimes</span>
+                        <span class="stack-pill">Audio Analysis Libraries (FFmpeg, Librosa)</span>
+                        <span class="stack-pill">Copyright Fingerprinting APIs</span>
+                        <span class="stack-pill">DSP Distribution Gateways</span>
+                        <span class="stack-pill">n8n Workflow Glue</span>
+                        <span class="stack-pill">Claude 4.0 Sonnet</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 2.2 -->
+                <div class="project-card" data-status="active">
+                    <div class="project-title">
+                        Utility Rebate Workflow Automation (Rebate Runner)
+                        <span class="status-badge active">Prototype Phase</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Energy Services / Contractor Operations</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Manual-first MVP complete; Agentic expansion scoped</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Commercial utility rebate workflows are document-heavy, manually coordinated, and prone to extensive pipeline delays. The approval chain spans local contractors, OEMs, back-office auditors, and fragmented utility portals. Manual work includes extracting metadata from project intake files, checking address matches on utility bills, validating equipment nameplate photos and serial numbers, tracking service level agreements (SLAs), and routing documents for digital signatures.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Led a team of <span class="highlight-text">software, front-end, and platform engineers</span> to build a responsive manual-first workflow application (v0/v1) for tracking rebate submissions. Scoped the automation layer (v1.5/v2) which implements an agentic document classifier and browser automation suite. The agent automatically processes incoming emails and documents, extracts nameplate metadata and serials via OCR, flags discrepancies, and automates submission directly to utility portals on cloud machines (avoiding user desktop interference).</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">React & Node.js</span>
+                        <span class="stack-pill">Python Document OCR</span>
+                        <span class="stack-pill">n8n Orchestration</span>
+                        <span class="stack-pill">Puppeteer (Cloud Browser Automation)</span>
+                        <span class="stack-pill">Claude 4.0 Sonnet</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 2.3 -->
+                <div class="project-card" data-status="discovery">
+                    <div class="project-title">
+                        Insurance Renewal / Remarketing Copilot
+                        <span class="status-badge discovery">Blueprint Phase</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Commercial Insurance Agency Operations</span>
+                        <span class="meta-label">Mission Target:</span>
+                        <span class="meta-value">Designed to optimize renewal cycle time and remarketing turnaround</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Commercial insurance remarketing workflows are highly fragmented and slow. Account managers manually log into dozens of carrier portals to enter customer exposure data. Crucial client service notes are scattered across calls, texts, and emails, resulting in renewal outreach starting too late, poor account visibility, and missed remarketing opportunities.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Designed an end-to-end renewal pilot utilizing collaborative agents. The workflow automatically ingests renewal cycles, normalizes fragmented email and text service notes, extracts data from current policy declarations, and sequences carrier portal entry. Scoped metrics include renewal cycle time reduction, portal data entry hours saved, and remarketing turnaround speed. Includes a structured, outcome-based pricing model per active agent.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 2.4 -->
+                <div class="project-card" data-status="paused">
+                    <div class="project-title">
+                        SMB Accounting / Insurance MVP
+                        <span class="status-badge paused">Concept Hopper</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">SMB Operations / Post-Acquisition Integration</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">MVP completed; pending stakeholder alignment</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Small and recently acquired middle-market businesses frequently lack clean, standardized accounting and insurance workflows during post-acquisition integration. Handing off financial data, tracking compliance dates, and coordinating insurance document updates create a recurring manual burden for holding company operators.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Designed and built an MVP workflow system that automates accounting and insurance document ingestion. The system automatically categorizes incoming financial documents, routes them to proper folders, flags exceptions (such as missing signatures or date mismatches), and schedules automated follow-up emails to owner/operators. Designed clear internal extension paths for acquired entity bookkeeping and cash-flow reporting dashboards.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 2.5 -->
+                <div class="project-card" data-status="discovery">
+                    <div class="project-title">
+                        E-Commerce HRIS & Corporate Gifting Workflows
+                        <span class="status-badge discovery">Blueprint Phase</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">E-commerce / Corporate Gifting</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Go-to-market operational plan mapped</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Corporate gifting and employee lifecycle commerce systems frequently struggle with workflow discipline rather than frontend storefront development. The core challenge is building a robust, automated bridge connecting HRIS milestones (such as onboarding or work anniversaries) with gift selection, fulfillment tracking, operational approvals, and customer reminders.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Created a comprehensive go-to-market and workflow plan focusing on three entry points: HR milestones, direct ADP/Workday HRIS API integrations, and scalable corporate gifting. Mapped automated workflows connecting HRIS employee databases to e-commerce fulfillment loops. Prioritized validating customer conversion metrics and unit economics before engineering heavy custom software integrations.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+            </div>
+
+            <!-- 3. Finance, ERP & Portfolio Operations -->
+            <div class="category-group" id="finance-erp">
+                <div class="category-header">
+                    Financial Systems & Ledger Control Centers
+                    <span>3 Projects</span>
+                </div>
+
+                <!-- Category Isometric Banner -->
+                <div class="realm-banner-card">
+                    <img src="finance_realm.png" alt="Financial Systems Realm" class="realm-banner-img">
+                    <div class="realm-banner-overlay"></div>
+                    <div class="realm-banner-text">
+                        <h3>Financial Systems &amp; Ledger Control Centers</h3>
+                        <p>Enterprise ERP API connectors and spend audit orchestrations consolidating board-level metrics.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3.1 -->
+                <div class="project-card" data-status="active">
+                    <div class="project-title">
+                        Portfolio Finance & Board Control Center
+                        <span class="status-badge active">Prototype Phase</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Holding Company / Finance Transformation</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Active development phase</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Holding company executives face fragmented financial visibility across corporate cards, banking portals, payroll reports, ERP databases, and ad hoc spreadsheets. Answering basic operational questions—such as tracking department-level spend, identifying avoidable SaaS subscriptions, calculating real-time AR/AP retention metrics, and synthesizing board-pack financial summaries—requires massive manual coordination.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Led a team of <span class="highlight-text">software, data, and platform engineers</span> to design, build, and deploy a unified Finance & Board Control Center. The platform integrates platform ERP data, scheduled bank/card statements, and payroll exports. Automated workflows map and classify spend, calculate AR/AP customer retention, track cash-flow reconciliations, and auto-synthesize complete board-prep slides and data summaries. Incorporates automated agentic email follow-up for missing transaction details or receipts.</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">ERP API Connectors</span>
+                        <span class="stack-pill">OAuth 2.0 Proxies</span>
+                        <span class="stack-pill">Scheduled Ingestion Workflows</span>
+                        <span class="stack-pill">n8n Orchestration</span>
+                        <span class="stack-pill">Claude 4.0 Sonnet</span>
+                        <span class="stack-pill">Postgres</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 3.2 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        Acumatica ERP API Integration
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Industrial Services Portfolio Company</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Production Deployed (Scheduled n8n Workflow)</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">A portfolio company platform admin had provisioned standard user login credentials for an automation job that required headless, programmatic API access. Financial ledger data, inventory tables, and customer records needed to flow securely into downstream diligence harnesses and executive reporting engines without UI scraping or manual CSV exports.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Led a team of <span class="highlight-text">software and systems engineers</span> to design, deploy, and verify a highly secure two-part OAuth 2.0 provisioning flow: (1) Configured a dedicated service user inside the Acumatica Users form (SM201010) with role-scoped, read-only permissions across targeted financial modules; (2) Configured a Connected Application inside Connected Applications (SM303010) utilizing the Resource Owner Password Credentials flow.</p>
+                    <p class="project-text">A scheduled n8n workflow executes a daily token refresh via the Acumatica OAuth endpoint using the password grant type. The token is securely cached, exposing a clean REST API interface to downstream LLM agents. Extracted records flow directly into reporting systems.</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Acumatica Connected Applications API</span>
+                        <span class="stack-pill">OAuth 2.0 Resource Owner Credentials</span>
+                        <span class="stack-pill">n8n Credential Manager</span>
+                        <span class="stack-pill">Postgres</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 3.3 -->
+                <div class="project-card" data-status="discovery">
+                    <div class="project-title">
+                        Energy-Savings Diligence & Paid PoV Packaging (Cascara)
+                        <span class="status-badge discovery">Blueprint Phase</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Energy Consulting Operations</span>
+                        <span class="meta-label">Mission Scope:</span>
+                        <span class="meta-value">Convert informal consulting opportunities into scoped billable agreements</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Valuable industrial energy-savings opportunities identified during informal consulting site-walks frequently die in "presentation purgatory." Without a highly structured, paid proof-of-value (PoV) commitment document, consultants waste unpaid hours producing complex engineering designs before securing commercial commitments.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Designed a repeatable Statement of Work (SOW) and paid PoV commitment packaging system. The workflow automates the drafting of diligence memos, quantifies expected energy savings, maps project milestones, and generates binding SOWs with explicit payment and value-ownership terms, ensuring no unpaid work is delivered.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+            </div>
+
+            <!-- 4. Industrial & Field Operations -->
+            <div class="category-group" id="industrial">
+                <div class="category-header">
+                    Heavy Industrial & Physical Field Control
+                    <span>2 Projects</span>
+                </div>
+
+                <!-- Category Isometric Banner -->
+                <div class="realm-banner-card">
+                    <img src="industrial_realm.png" alt="Heavy Industrial Realm" class="realm-banner-img">
+                    <div class="realm-banner-overlay"></div>
+                    <div class="realm-banner-text">
+                        <h3>Heavy Industrial &amp; Physical Field Control</h3>
+                        <p>HMI configurations and equipment service data structures built to digitize field operations.</p>
+                    </div>
+                </div>
+
+                <!-- Project 4.1 -->
+                <div class="project-card" data-status="discovery">
+                    <div class="project-title">
+                        Industrial Agent Portfolio (Invent)
+                        <span class="status-badge discovery">Blueprint Phase</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Industrial Services / Energy Savings</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Opportunity hopper active</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Technical industrial operations contain massive hidden margins in technical workflows, including HVAC energy optimization, capital equipment lifecycle tracking, complex parts procurement, and service coordination. The challenge is identifying and filtering these opportunities to prioritize agent investments with a clear ROI story over abstract AI experimentation.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Designed a structured opportunity hopper and agent portfolio framework focused strictly on quantifiable business metrics: utility savings generated, equipment downtime reduced, and work-orders completed. Created standard data models for gathering operational logs and estimating the direct ROI of deploying agents to technical workflows.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 4.2 -->
+                <div class="project-card" data-status="discovery">
+                    <div class="project-title">
+                        Metals Recycling HMI & Parts / Service Automation
+                        <span class="status-badge discovery">Blueprint Phase</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Metals Recycling / Industrial Field Operations</span>
+                        <span class="meta-label">Mission Scope:</span>
+                        <span class="meta-value">Establish HMI requirements and service data structures</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Industrial projects and heavy parts/service workflows in metals recycling frequently suffer from unclear ownership, incomplete data capture, and weak customer-facing ticketing visibility. Attempting to build agentic automations on top of chaotic, undocumented service processes fails to create durable value.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Mapped the industrial operational workflows and defined Human-Machine Interface (HMI) tooling requirements. Structured a clean database schema to capture parts, serial numbers, and equipment service logs. Established key performance indicators (KPIs) to track ticketing response and work-order resolution times, laying the database foundation before building automated service agents.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+            </div>
+
+            <!-- 5. Agent Infrastructure & Platform Engineering -->
+            <div class="category-group" id="infrastructure">
+                <div class="category-header">
+                    Agent Fleet Core & Memory Nexus
+                    <span>5 Projects</span>
+                </div>
+
+                <!-- Category Isometric Banner -->
+                <div class="realm-banner-card">
+                    <img src="infrastructure_realm.png" alt="Agent Fleet Core Realm" class="realm-banner-img">
+                    <div class="realm-banner-overlay"></div>
+                    <div class="realm-banner-text">
+                        <h3>Agent Fleet Core &amp; Memory Nexus</h3>
+                        <p>Distributed Tailscale nodes managed via Paperclip and backed by Honcho relational Postgres graphs.</p>
+                    </div>
+                </div>
+
+                <!-- Project 5.1 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        Multi-Node Agent Fleet Architecture (Slot-Map Doctrine)
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Internal AI Platform</span>
+                        <span class="meta-label">Nodal Topology:</span>
+                        <span class="meta-value">Distributed 8-node fleet over private networking overlay</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Running dozens of persistent, autonomous AI agents across a holding company, multiple distinct portfolio companies, and external freelance networks without explicit placement and security rules leads to massive resource sprawl, credential exposure, and architectural chaos.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Architected, designed, and deployed a distributed 8-node agent fleet utilizing a state-gravity heuristic: workloads requiring persistent memory pull toward a single coordination plane, while ephemeral, high-risk, or high-compute tasks are isolated to edge nodes.</p>
+
+                    <div class="project-block-title">Node Distribution & Placement Doctrine</div>
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>Node & Hardware</th>
+                                <th>Role & Placement Doctrine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Daily-Driver Workstation</strong><br>(Apple Silicon, 128 GB)</td>
+                                <td>Sovereign captain's chair, secure development, and high-trust local execution.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Local Agent Runner</strong><br>(Apple Silicon, 32 GB)</td>
+                                <td>Always-on local execution hosting the primary Chief of Staff agent.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Heavy-Compute Forge</strong><br>(OVH cloud, 24 vCPU, 96 GB)</td>
+                                <td>Asynchronous batch jobs, text-embedding pipelines, and server-side control plane.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Coordination Plane</strong><br>(Servarica, 16 vCPU, 64 GB, 4TB SSD)</td>
+                                <td>Central relational storage: Postgres databases, Honcho memory, n8n, MinIO, Vaultwarden.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cloudflare Workers</strong></td>
+                                <td>Edge perimeter: webhooks ingestion, OAuth proxy logic, and routing shims.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Netlify / Railway</strong></td>
+                                <td>Netlify hosts static JAMstack frontends; Railway manages customer-facing backend APIs.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>exe.dev Sandboxes</strong></td>
+                                <td>Ephemeral project sandboxes: isolated per-project agent virtual machines (VMs).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="project-block-title">Cross-Cutting Fleet Principles</div>
+                    <ul>
+                        <li><strong>Identity:</strong> Tailscale private wireguard networking overlay secures all nodes.</li>
+                        <li><strong>Secrets:</strong> Kept sovereign on the daily-driver workstation; leased via short-lived tokens to cloud nodes.</li>
+                        <li><strong>Placement:</strong> External users hit Workers/Railway; heavy batch jobs hit the Forge; interactive workflows run locally.</li>
+                    </ul>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Tailscale Overlay Network</span>
+                        <span class="stack-pill">Apple Silicon Bare-metal</span>
+                        <span class="stack-pill">Linux systemd</span>
+                        <span class="stack-pill">Cloudflare Workers</span>
+                        <span class="stack-pill">Docker Compose</span>
+                        <span class="stack-pill">Postgres</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 5.2 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        Paperclip Control Plane Deployment
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Internal AI Platform</span>
+                        <span class="meta-label">Operational Impact:</span>
+                        <span class="meta-value">Replaced ~800 lines of custom python supervisor code</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Custom command-line orchestration scripts did not provide the robust organizational hierarchies, strict budget limits, full audit trails, or multi-company workspace isolation required to manage a fleet of agents across holding companies and portfolio company domains.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Led a team of <span class="highlight-text">software and platform engineers</span> to design, build, and deploy **Paperclip** (Node.js orchestration server and React dashboard) as the central agent fleet control plane. The system establishes hierarchical organizational charts with clear delegation rules, tracks monthly per-agent budget caps (auto-pausing models on limit), schedules heartbeats for periodic agent wakeups, and records full tool-call tracing logs. Thin adapter shims translate the Paperclip heartbeat protocol, ensuring the control plane survives underlying agent framework upgrades.</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Node.js & React</span>
+                        <span class="stack-pill">Docker Compose</span>
+                        <span class="stack-pill">Postgres</span>
+                        <span class="stack-pill">Tailscale Private Networking</span>
+                        <span class="stack-pill">launchd Workstation Daemons</span>
+                        <span class="stack-pill">Langfuse (Observability)</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 5.3 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        Honcho Self-Hosted Memory Architecture
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Internal AI Platform</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Active on central Coordination Plane</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Sensitive PE target transaction data, employee lists, and proprietary portfolio company dynamics cannot be stored on third-party SaaS memory provider servers. Furthermore, generic hosted memory providers lack a robust, scheduled memory consolidation and summarization loop.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Architected, designed, and deployed a self-hosted **Honcho** memory architecture backed by Postgres. The system isolates targets using hard Workspace boundaries rather than per-agent containers. Implements observer/target peer models natively: each portfolio company represents a target peer, and each agent represents an observer. This creates distinct per-agent mental models, allowing contradictory conclusions to be automatically surfaced and resolved via a scheduled consolidation model (Dream) running every 8 hours.</p>
+
+                    <table class="project-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Function</th>
+                                <th>Routing (Self-Hosted)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Deriver</strong></td>
+                                <td>Hot-path fact extraction executed on every single message.</td>
+                                <td>Gemini Flash (fast/cheap)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Summary</strong></td>
+                                <td>Session context compression triggered every 20-60 messages.</td>
+                                <td>Gemini Flash</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dream</strong></td>
+                                <td>Consolidates raw observations into ownable facts every 8 hours.</td>
+                                <td>Claude Opus 4.6 (high intelligence)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Honcho Open-Source Engine</span>
+                        <span class="stack-pill">Postgres</span>
+                        <span class="stack-pill">Claude Opus 4.6 & Gemini Flash</span>
+                        <span class="stack-pill">Memory Graph Consolidation</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 5.4 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        Agent Identity & OAuth Architecture
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Internal AI Platform</span>
+                        <span class="meta-label">System Coverage:</span>
+                        <span class="meta-value">Four-layer authorization and identity proxy model</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">An autonomous agent fleet requires reliable, long-lived access to third-party SaaS systems (such as Slack, Notion, and Linear) without exposing raw user credentials or violating holdco/portco domain isolation boundaries.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Designed and built a comprehensive **four-layer identity model**: (1) Human authentication; (2) Internal auth within owned systems; (3) Delegated external SaaS access; (4) Agent-to-agent workload identity. Uses WorkOS Pipes for major providers (Google, M365, Slack) isolating credentials by organizationId. Built a custom credential proxy on Cloudflare Workers utilizing encrypted token exchange to handle long-tail integrations. Injected scoped identities into portco data surfaces via OAuth-protected Model Context Protocol (MCP) servers.</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Cloudflare Workers</span>
+                        <span class="stack-pill">Cloudflare KV with @cloudflare/workers-oauth-provider</span>
+                        <span class="stack-pill">WorkOS Pipes</span>
+                        <span class="stack-pill">Model Context Protocol (MCP)</span>
+                        <span class="stack-pill">Tailscale OAuth Client ID</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 5.5 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        Linear Workspace Architecture & Agent Orchestration
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Internal AI Platform / Operations</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Active operating infrastructure</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">The central holding company Linear project management workspace had degenerated into chaos, consisting of empty teams, duplicate project structures, and orphaned issues. Agents lacked clean, addressable task routing, leading to execution boundary overlaps.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Restructured the entire workspace into a clean six-team architecture mapped to distinct operating entities. Configured hard jurisdiction boundaries and injected custom markdown agent guidance files into active sessions. Built a dedicated "Linear Agent" that polls GraphQL, summarizes cross-venture patterns, and drafts weekly cycle planning updates. Deployed an n8n webhook bridge that routes issue updates dynamically back to the Paperclip control plane.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+            </div>
+
+            <!-- 6. Custom AI Skills & Reusable Tooling -->
+            <div class="category-group" id="reusable-skills">
+                <div class="category-header">
+                    Imagineering Tooling & Operator Enablers
+                    <span>3 Projects</span>
+                </div>
+
+                <!-- Category Isometric Banner -->
+                <div class="realm-banner-card">
+                    <img src="skills_realm.png" alt="Imagineering Tooling Realm" class="realm-banner-img">
+                    <div class="realm-banner-overlay"></div>
+                    <div class="realm-banner-text">
+                        <h3>Imagineering Tooling &amp; Operator Enablers</h3>
+                        <p>Reusable custom tools, slide outline compilers, and Stop Hook state synchronization patterns.</p>
+                    </div>
+                </div>
+
+                <!-- Project 6.1 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        x-post-fetcher Skill
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Reusable AI Tooling</span>
+                        <span class="meta-label">Artifact Format:</span>
+                        <span class="meta-value">Anthropic Portable .skill File Manifest</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">AI agents require a robust, highly reliable skill to fetch, parse, and analyze long-form X (Twitter) articles and posts from raw URLs, bypassing common rate-limits, oembed constraints, and payload parsing errors that generic web scrapers encounter.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Developed a portable `.skill` package featuring a fallback fetch architecture: (1) Primary requests fetch from the public fxtwitter API (extracting full text, media descriptions, engagement metrics, and quote threads without auth); (2) Secondary fallback queries oembed endpoints; (3) Tertiary fallback targets X API v2. Handles long-form Draft.js blocks (X Articles) mapping nested styles to pristine markdown. Deploys a 6-layer analytical engine evaluating Thesis, Non-obvious Insights, Contrarian Reads, and Implications.</p>
+
+                    <div class="project-block-title">Core Magic (Tech Stack)</div>
+                    <div class="stack-list">
+                        <span class="stack-pill">Anthropic Skill Schema</span>
+                        <span class="stack-pill">Python BeautifulSoup</span>
+                        <span class="stack-pill">fxtwitter REST API</span>
+                        <span class="stack-pill">Draft.js Parsing Engine</span>
+                        <span class="stack-pill">Claude 4.0 Sonnet</span>
+                    </div>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 6.2 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        Consulting-Grade Slide Generation Skill (Chronicle Aesthetic, Codex)
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Reusable AI Tooling / Deliverable Generation</span>
+                        <span class="meta-label">Mission Scope:</span>
+                        <span class="meta-value">Reverse-engineer McKinsey, BCG, and Bain presentation graphics</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">Standard AI-to-PowerPoint generators output generic, poorly aligned bullet lists on colored cards that fail to meet elite consulting and board-level presentation standards.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Developed a custom Codex skill that compiles presentation outlines based on a systematic decomposition of top-tier consulting decks. The skill encodes strict design rules, acting as a language compiler that formats outputs into JSON schemas for downstream renderers (such as Gamma or Canva). Deployed rules ensure action-oriented headers stating key conclusions in sentence form, single dominant slide objects (e.g. chart vs. matrix), explicit data sourcing, and balanced margins.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+
+                <!-- Project 6.3 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        CLAUDE.md Compounding Pattern with Stop Hooks
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Cross-Session Agent Memory</span>
+                        <span class="meta-label">Imagineering Phase:</span>
+                        <span class="meta-value">Active Operating Pattern</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">AI agents typically complete active tasks in code sessions, but fail to record lessons learned, tool errors, or updated environment details back to repository documentation before shutdown. This results in the next session starting cold, forcing subsequent agents to rediscover identical limits.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Created a programmatic session-termination **Stop Hook** pattern. Upon completing a task or detecting session shutdown, the agent is forced to execute a structured memory extraction script. The hook automatically maps (1) successful/failed tool patterns, (2) incorrect environment assumptions, and (3) learned system configurations, writing updates directly into `CLAUDE.md` to ensure memory compounds across sessions.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+            </div>
+
+            <!-- 7. Operator Efficiency -->
+            <div class="category-group" id="efficiency">
+                <div class="category-header">
+                    SaaS & Spend Rationalization
+                    <span>1 Project</span>
+                </div>
+
+                <!-- Category Isometric Banner -->
+                <div class="realm-banner-card">
+                    <img src="efficiency_realm.png" alt="SaaS Spend Rationalization Realm" class="realm-banner-img">
+                    <div class="realm-banner-overlay"></div>
+                    <div class="realm-banner-text">
+                        <h3>SaaS &amp; Spend Rationalization</h3>
+                        <p>Compute optimizations and slot-map doctrines delivering strict operational overhead rationalization.</p>
+                    </div>
+                </div>
+
+                <!-- Project 7.1 -->
+                <div class="project-card" data-status="deployed">
+                    <div class="project-title">
+                        Compute and Subscription Rationalization
+                        <span class="status-badge deployed">Active Attraction</span>
+                    </div>
+                    <div class="project-meta-grid">
+                        <span class="meta-label">Realm (Sector):</span>
+                        <span class="meta-value">Operator Efficiency / Spend Audit</span>
+                        <span class="meta-label">Mission Target:</span>
+                        <span class="meta-value">Optimize high-tool-density SaaS stack</span>
+                    </div>
+                    <div class="project-block-title">The Illusion (The Challenge)</div>
+                    <p class="project-text">High-tool-density operators and holding company departments accumulate massive duplicate-purpose subscription portfolios over time, leading to bloated overhead expenses without any job-to-be-done billing discipline.</p>
+                    
+                    <div class="project-block-title">The Engineering (The Attraction)</div>
+                    <p class="project-text">Designed and executed a structured SaaS spend audit. Evaluated a $5,400/month baseline across 31 active tools, mapping each tool to a strict "job-to-be-done" framework. Enforced a slot-map doctrine requiring exactly one blessed tool per active job, and negotiated license downscales and terminations to establish a target spend profile of $4,100/month, delivering immediate operational cost optimization.</p>
+                    <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Blueprint Holographic Modal Overlay -->
+    <div id="blueprint-modal" class="blueprint-modal">
+        <div class="blueprint-modal-content">
+            <button class="close-modal" id="close-modal-btn">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="blueprint-workspace">
+                <div class="blueprint-workspace-header">
+                    <div class="blueprint-header-logo">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--accent-color);">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                        <span id="modal-attraction-realm" style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-color);">PE Diligence Realm</span>
+                    </div>
+                    <h2 id="modal-title">PE Data Room Intelligence System</h2>
+                </div>
+                <div class="blueprint-layout-grid">
+                    <div class="blueprint-graphic-panel">
+                        <!-- Holographic Image representing Realm -->
+                        <img id="modal-realm-img" src="pe_diligence_realm.png" alt="Holographic Spec" class="modal-hologram-img">
+                        <div class="modal-hologram-overlay"></div>
+                        <div class="modal-glow-light"></div>
+                        <!-- Sensory SVG Pipeline Flowchart -->
+                        <div id="modal-flowchart-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; background: rgba(8, 6, 15, 0.55); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
+                            <div style="font-family: monospace; font-size: 10px; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; background: rgba(56, 189, 248, 0.1); padding: 4px 10px; border-radius: 4px; align-self: flex-start; box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);">
+                                ⚙️ Systems Engineering Pipeline
+                            </div>
+                            <div id="flowchart-svg-container" style="flex-grow: 1; width: 100%; display: flex; align-items: center; justify-content: center;">
+                                <!-- Compiled SVG injected here dynamically -->
+                            </div>
+                            <div id="flowchart-node-desc" style="font-family: 'Courier New', monospace; font-size: 11px; color: #a78bfa; text-align: center; height: 35px; font-weight: bold; line-height: 1.4;">
+                                Hover over nodes to analyze component blueprints...
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blueprint-specs-panel">
+                        <div class="blueprint-spec-block">
+                            <span class="blueprint-spec-tag">The Illusion (Challenge)</span>
+                            <p id="modal-illusion" class="blueprint-spec-text"></p>
+                        </div>
+                        <div class="blueprint-spec-block">
+                            <span class="blueprint-spec-tag">The Engineering (Attraction)</span>
+                            <p id="modal-engineering" class="blueprint-spec-text"></p>
+                        </div>
+                        <div class="blueprint-spec-block" id="modal-blueprint-block">
+                            <span class="blueprint-spec-tag">The Blueprint (System Architecture)</span>
+                            <div id="modal-blueprint-content" class="blueprint-spec-text"></div>
+                        </div>
+                        <div class="blueprint-spec-block">
+                            <span class="blueprint-spec-tag">Core Magic (Tech Stack)</span>
+                            <div id="modal-magic-stack" class="stack-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <a href="#top" class="top-btn" aria-label="Back to top">▲</a>
+
+    <script>
+        // ==========================================
+        // DYNAMIC INTERACTIVE PARTICLES (PIXIE DUST)
+        // ==========================================
+        document.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 768) return; // Performance check
+            
+            // Limit frequency of particle spawn
+            if (Math.random() > 0.15) return;
+            
+            const particle = document.createElement('div');
+            particle.className = 'pixie-dust';
+            
+            // Random parameters matching stardust aura
+            const size = Math.random() * 5 + 2;
+            const colors = ['#a78bfa', '#38bdf8', '#fbbf24', '#f472b6', '#34d399'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.backgroundColor = randomColor;
+            particle.style.left = `${e.clientX}px`;
+            particle.style.top = `${e.clientY + window.scrollY}px`;
+            particle.style.boxShadow = `0 0 8px 2px ${randomColor}`;
+            
+            document.body.appendChild(particle);
+            
+            // Fluid magical animation float
+            setTimeout(() => {
+                particle.style.transform = `translate(${(Math.random() - 0.5) * 60}px, ${-Math.random() * 80 - 30}px) scale(0)`;
+                particle.style.opacity = '0';
+            }, 50);
+            
+            // Trash collector
+            setTimeout(() => {
+                particle.remove();
+            }, 750);
+        });
+
+        // ==========================================
+        // TYPEWRITER BLUEPRINT CONSOLE DIAGNOSTICS
+        // ==========================================
+        const consoleLines = [
+            "[STATUS] Initializing FirstRatio Imagineering core protocols... [OK]",
+            "[FLEET] Securing Tailscale private Wireguard network overlay... [OK]",
+            "[MEMORY] Honcho relational memory graph dream consolidated... [OK]",
+            "[DIAGNOSTIC] Opposing-oracle evaluator differential check... [OK]",
+            "[DSP] Musitrust chatbot streaming distribution active... [OK]",
+            "[NODE] Cloud Forge 03 processing text-embedding pipeline... [OK]",
+            "[CONTROL] Paperclip budget monitor: spending normalized... [OK]",
+            "[MCP] Model Context Protocol provisioning secure API tokens... [OK]",
+            "[IMAGINEERING] Welcome, Client. Ready to deploy magical AI attractions... [OK]"
+        ];
+
+        const consoleBody = document.getElementById('console-output');
+        consoleBody.innerHTML = '';
+        let lineIndex = 0;
+
+        function typeConsoleLine() {
+            if (lineIndex >= consoleLines.length) {
+                lineIndex = 0;
+                consoleBody.innerHTML = '';
+            }
+            
+            const line = document.createElement('span');
+            line.className = 'console-line';
+            line.style.color = lineIndex % 3 === 0 ? '#fbbf24' : (lineIndex % 3 === 1 ? '#38bdf8' : '#34d399');
+            consoleBody.appendChild(line);
+            
+            const text = consoleLines[lineIndex];
+            let charIndex = 0;
+            
+            function typeChar() {
+                if (charIndex < text.length) {
+                    line.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeChar, 12);
+                } else {
+                    lineIndex++;
+                    // Cap line stack to prevent overflow
+                    while (consoleBody.children.length > 4) {
+                        consoleBody.removeChild(consoleBody.firstChild);
+                    }
+                    setTimeout(typeConsoleLine, 1500);
+                }
+            }
+            
+            typeChar();
+        }
+
+        setTimeout(typeConsoleLine, 800);
+
+        // ==========================================
+        // BROWSER-SYNTHESIZED WEB AUDIO ENGINE
+        // ==========================================
+        class ImagineerSynth {
+            constructor() {
+                this.audioCtx = null;
+                this.muted = true;
+                this.waveType = 'sine';
+                this.pitchFreq = 523.25;
+                this.masterGainMultiplier = 0.5;
+            }
+
+            init() {
+                if (!this.audioCtx) {
+                    this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            }
+
+            setMute(state) {
+                this.muted = state;
+                if (!state) this.init();
+            }
+
+            playChime() {
+                if (this.muted || !this.audioCtx) return;
+                const now = this.audioCtx.currentTime;
+                const baseMult = this.pitchFreq / 523.25;
+                const freqs = [523.25, 659.25, 783.99, 1046.50].map(f => f * baseMult);
+                
+                freqs.forEach((freq, idx) => {
+                    const osc = this.audioCtx.createOscillator();
+                    const gain = this.audioCtx.createGain();
+                    
+                    osc.type = this.waveType;
+                    osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+                    
+                    gain.gain.setValueAtTime(0.06 * this.masterGainMultiplier, now + idx * 0.08);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.08 + 0.6);
+                    
+                    osc.connect(gain);
+                    gain.connect(this.audioCtx.destination);
+                    
+                    osc.start(now + idx * 0.08);
+                    osc.stop(now + idx * 0.08 + 0.6);
+                });
+            }
+
+            playBlip() {
+                if (this.muted || !this.audioCtx) return;
+                const now = this.audioCtx.currentTime;
+                const osc = this.audioCtx.createOscillator();
+                const gain = this.audioCtx.createGain();
+                
+                osc.type = this.waveType;
+                osc.frequency.setValueAtTime(this.pitchFreq * 1.68, now);
+                osc.frequency.exponentialRampToValueAtTime(this.pitchFreq * 0.84, now + 0.1);
+                
+                gain.gain.setValueAtTime(0.04 * this.masterGainMultiplier, now);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.1);
+                
+                osc.connect(gain);
+                gain.connect(this.audioCtx.destination);
+                
+                osc.start(now);
+                osc.stop(now + 0.1);
+            }
+
+            playSweep(up = true) {
+                if (this.muted || !this.audioCtx) return;
+                const now = this.audioCtx.currentTime;
+                const osc = this.audioCtx.createOscillator();
+                const gain = this.audioCtx.createGain();
+                
+                osc.type = this.waveType;
+                if (up) {
+                    osc.frequency.setValueAtTime(this.pitchFreq * 0.42, now);
+                    osc.frequency.exponentialRampToValueAtTime(this.pitchFreq * 1.68, now + 0.4);
+                } else {
+                    osc.frequency.setValueAtTime(this.pitchFreq * 1.68, now);
+                    osc.frequency.exponentialRampToValueAtTime(this.pitchFreq * 0.42, now + 0.4);
+                }
+                
+                gain.gain.setValueAtTime(0.06 * this.masterGainMultiplier, now);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.4);
+                
+                osc.connect(gain);
+                gain.connect(this.audioCtx.destination);
+                
+                osc.start(now);
+                osc.stop(now + 0.4);
+            }
+
+            playHackerChime() {
+                if (this.muted || !this.audioCtx) return;
+                const now = this.audioCtx.currentTime;
+                const freqs = [330, 440, 660, 880, 1320]; // Cyber A minor tech chord
+                
+                freqs.forEach((freq, idx) => {
+                    const osc = this.audioCtx.createOscillator();
+                    const gain = this.audioCtx.createGain();
+                    
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(freq, now + idx * 0.05);
+                    
+                    const filter = this.audioCtx.createBiquadFilter();
+                    filter.type = 'lowpass';
+                    filter.frequency.setValueAtTime(2000, now);
+                    filter.frequency.exponentialRampToValueAtTime(300, now + 0.5);
+                    
+                    gain.gain.setValueAtTime(0.04, now + idx * 0.05);
+                    gain.gain.exponentialRampToValueAtTime(0.0001, now + idx * 0.05 + 0.4);
+                    
+                    osc.connect(filter);
+                    filter.connect(gain);
+                    gain.connect(this.audioCtx.destination);
+                    
+                    osc.start(now + idx * 0.05);
+                    osc.stop(now + idx * 0.05 + 0.4);
+                });
+            }
+        }
+
+        const synth = new ImagineerSynth();
+        const soundToggle = document.getElementById('sound-toggle');
+        const soundOnIcon = soundToggle.querySelector('.sound-on-icon');
+        const soundOffIcon = soundToggle.querySelector('.sound-off-icon');
+        const soundStatusText = document.getElementById('sound-status-text');
+
+        soundToggle.addEventListener('click', () => {
+            if (synth.muted) {
+                synth.setMute(false);
+                soundOnIcon.style.display = 'block';
+                soundOffIcon.style.display = 'none';
+                soundStatusText.textContent = "Sound: ON";
+                synth.playChime();
+            } else {
+                synth.setMute(true);
+                soundOnIcon.style.display = 'none';
+                soundOffIcon.style.display = 'block';
+                soundStatusText.textContent = "Sound: OFF";
+            }
+        });
+
+        // ==========================================
+        // BLUEPRINT MODAL CONTROLLER & DATA BINDING
+        // ==========================================
+        const modal = document.getElementById('blueprint-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        const modalTitle = document.getElementById('modal-title');
+        const modalRealm = document.getElementById('modal-attraction-realm');
+        const modalRealmImg = document.getElementById('modal-realm-img');
+        const modalIllusion = document.getElementById('modal-illusion');
+        const modalEngineering = document.getElementById('modal-engineering');
+        const modalBlueprintContent = document.getElementById('modal-blueprint-content');
+        const modalBlueprintBlock = document.getElementById('modal-blueprint-block');
+        const modalMagicStack = document.getElementById('modal-magic-stack');
+
+        function openBlueprintModal(card) {
+            synth.playChime();
+            
+            // Extract content dynamically from clicked card
+            const title = card.querySelector('.project-title').firstChild.textContent.trim();
+            const realmGroup = card.closest('.category-group');
+            const realmName = realmGroup.querySelector('.category-header').firstChild.textContent.trim();
+            const realmId = realmGroup.id;
+            
+            // Match appropriate holographic image based on category ID
+            let hologramSrc = 'pe_diligence_realm.png';
+            if (realmId === 'operations') {
+                hologramSrc = 'operations_realm.png';
+            } else if (realmId === 'finance-erp') {
+                hologramSrc = 'finance_realm.png';
+            } else if (realmId === 'industrial') {
+                hologramSrc = 'industrial_realm.png';
+            } else if (realmId === 'infrastructure') {
+                hologramSrc = 'infrastructure_realm.png';
+            } else if (realmId === 'reusable-skills') {
+                hologramSrc = 'skills_realm.png';
+            } else if (realmId === 'efficiency') {
+                hologramSrc = 'efficiency_realm.png';
+            }
+            
+            const illusionText = card.querySelector('.project-text').textContent.trim();
+            
+            // Extract the Engineering text
+            const engineeringPara = card.querySelector('.project-block-title + .project-text');
+            const engineeringText = engineeringPara ? engineeringPara.textContent.trim() : '';
+            
+            // Extract blueprints (tables or lists if available)
+            const blueprintTable = card.querySelector('.project-table');
+            const blueprintList = card.querySelector('ul');
+            
+            modalBlueprintContent.innerHTML = '';
+            if (blueprintTable) {
+                modalBlueprintBlock.style.display = 'block';
+                modalBlueprintContent.appendChild(blueprintTable.cloneNode(true));
+            } else if (blueprintList) {
+                modalBlueprintBlock.style.display = 'block';
+                modalBlueprintContent.appendChild(blueprintList.cloneNode(true));
+            } else {
+                modalBlueprintBlock.style.display = 'none';
+            }
+            
+            // Extract magic stack pills
+            const stackPills = card.querySelectorAll('.stack-pill');
+            modalMagicStack.innerHTML = '';
+            stackPills.forEach(pill => {
+                modalMagicStack.appendChild(pill.cloneNode(true));
+            });
+
+            // Bind values to modal elements
+            modalTitle.textContent = title;
+            modalRealm.textContent = realmName;
+            modalRealmImg.src = hologramSrc;
+            modalIllusion.textContent = illusionText;
+            modalEngineering.textContent = engineeringText;
+
+            // Draw Dynamic Systems SVG Flowchart Pipeline
+            setTimeout(() => {
+                drawModalFlowchart(realmId);
+            }, 50);
+
+            // Trigger Modal Visibility
+            modal.style.display = 'block';
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Lock background scroll
+        }
+
+        function closeModal() {
+            synth.playSweep(false);
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+            document.body.style.overflow = 'auto'; // Restore scroll
+        }
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // If user clicks a link inside, let it navigate naturally
+                if (e.target.tagName === 'A') return;
+                openBlueprintModal(card);
+            });
+            
+            // Add sound feedback on hover
+            card.addEventListener('mouseenter', () => {
+                synth.playBlip();
+            });
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Smooth scrolling for sidebar navigation with active highlighting
+        const navLinks = document.querySelectorAll('.nav-item a');
+        navLinks.forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                synth.playBlip();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+
+                // Update active navigation item
+                document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                this.parentElement.classList.add('active');
+            });
+        });
+
+        // Dynamic sidebar active item highlighting on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.category-group');
+            const scrollPos = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+            sections.forEach(section => {
+                if (section.style.display === 'none') return;
+
+                const top = section.offsetTop - 150;
+                const bottom = top + section.offsetHeight;
+
+                if (scrollPos >= top && scrollPos < bottom) {
+                    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+                    const navLink = document.querySelector(`.nav-item a[href="#${section.id}"]`);
+                    if (navLink) navLink.parentElement.classList.add('active');
+                }
+            });
+        });
+
+        // ==========================================
+        // REAL-TIME SEARCH & STATUS PILL FILTERING
+        // ==========================================
+        const searchInput = document.getElementById('search-input');
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const categoryGroups = document.querySelectorAll('.category-group');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        let currentFilter = 'all';
+        let searchQuery = '';
+
+        function updateFilters() {
+            categoryGroups.forEach(group => {
+                const groupCards = group.querySelectorAll('.project-card');
+                let visibleInGroup = 0;
+
+                groupCards.forEach(card => {
+                    const title = card.querySelector('.project-title').textContent.toLowerCase();
+                    const text = card.textContent.toLowerCase();
+                    const status = card.getAttribute('data-status') || '';
+                    
+                    const matchesSearch = title.includes(searchQuery) || text.includes(searchQuery);
+                    
+                    let matchesFilter = false;
+                    if (currentFilter === 'all') {
+                        matchesFilter = true;
+                    } else if (currentFilter === 'built-deployed') {
+                        matchesFilter = status === 'built' || status === 'deployed' || status === 'shipped';
+                    } else if (currentFilter === 'active') {
+                        matchesFilter = status === 'active';
+                    } else if (currentFilter === 'discovery-scoped') {
+                        matchesFilter = status === 'discovery' || status === 'paused';
+                    }
+
+                    if (matchesSearch && matchesFilter) {
+                        card.style.display = 'block';
+                        setTimeout(() => { card.style.opacity = '1'; }, 10);
+                        visibleInGroup++;
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide category group based on card visibility
+                if (visibleInGroup > 0) {
+                    group.style.display = 'block';
+                    // Update category count badge
+                    const countBadge = group.querySelector('.category-header span');
+                    if (countBadge) {
+                        countBadge.textContent = `${visibleInGroup} Attraction${visibleInGroup > 1 ? 's' : ''}`;
+                    }
+                } else {
+                    group.style.display = 'none';
+                }
+            });
+
+            // Update sidebar category active navigation displays and counts
+            updateSidebarNavs();
+        }
+
+        function updateSidebarNavs() {
+            categoryGroups.forEach(group => {
+                const navLink = document.querySelector(`.nav-item a[href="#${group.id}"]`);
+                if (navLink) {
+                    const li = navLink.parentElement;
+                    const counter = li.querySelector('.nav-counter');
+                    
+                    if (group.style.display === 'none') {
+                        li.style.display = 'none';
+                    } else {
+                        li.style.display = 'block';
+                        const visibleInGroup = group.querySelectorAll('.project-card[style*="display: block"]').length;
+                        if (counter) {
+                            counter.textContent = visibleInGroup;
+                        }
+                    }
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase();
+            synth.playBlip();
+            updateFilters();
+        });
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                synth.playChime();
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                currentFilter = pill.getAttribute('data-filter');
+                updateFilters();
+            });
+        });
+
+        // ==========================================
+        // PREMIUM DARK / LIGHT MODE SWITCHER
+        // ==========================================
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = themeToggle.querySelector('.sun-icon');
+        const moonIcon = themeToggle.querySelector('.moon-icon');
+
+        // Check for saved theme preference, otherwise use system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        if (savedTheme === 'light') {
+            setTheme('light');
+        } else {
+            setTheme('dark'); // Default to magical starry dark mode
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                setTheme('light');
+                synth.playSweep(true);
+            } else {
+                setTheme('dark');
+                synth.playSweep(false);
+            }
+        });
+
+        // ==========================================
+        // DYNAMIC SYSTEMS HUD & CLI CONTROLLERS
+        // ==========================================
+        const hudSpecsData = {
+            "PE Data Room Intelligence System": {
+                container: "fr-pe-diligence-rag:v2.4",
+                pod: "diligence-replica-3",
+                latency: "142ms",
+                stack: "Claude-3.5-Sonnet / Pinecone Serverless / Honcho PostgreSQL"
+            },
+            "Automated Onboarding Diligence & Integration (Paperclip)": {
+                container: "fr-paperclip-scheduler:v1.1",
+                pod: "scheduler-cron-1",
+                latency: "84ms",
+                stack: "n8n / Redis PubSub / Workday HRIS Connectors"
+            },
+            "Automated PE Sourcing & Platform Target Screening": {
+                container: "fr-pe-sourcing-crawler:v3.0",
+                pod: "sourcing-replica-1",
+                latency: "210ms",
+                stack: "Claude-3.5-Sonnet / Python Celery / Playwright"
+            },
+            "Corporate Gifting & HRIS Portal Integration Plan (Kageha)": {
+                container: "fr-kageha-gtm-scoper:v1.0",
+                pod: "kageha-mvp-1",
+                latency: "45ms",
+                stack: "SaaS SOW / HRIS API Scoper / Conversion Metrics"
+            },
+            "Musitrust LLC Music Distribution Agent": {
+                container: "fr-musitrust-chatbot:v4.2",
+                pod: "musitrust-master-1",
+                latency: "115ms",
+                stack: "Python Librosa & FFmpeg / Fingerprint API / Spotify DSP Gateway"
+            },
+            "Utility Rebate Workflow Automation (Rebate Runner)": {
+                container: "fr-rebaterunner-core:v1.2",
+                pod: "rebate-agent-2",
+                latency: "95ms",
+                stack: "n8n Workflow / Google Sheets API / LLM Entity Extraction"
+            },
+            "Salesforce to Postgres Bidirectional Sync (Tailscale / Docker)": {
+                container: "fr-salesforce-sync:v2.1",
+                pod: "sf-sync-replica-2",
+                latency: "62ms",
+                stack: "Tailscale Wireguard / Docker Compose / Postgres WAL"
+            },
+            "A/P Invoicing & Ledger Auto-Extraction (n8n, pdfplumber)": {
+                container: "fr-ap-invoice-parser:v1.5",
+                pod: "invoice-worker-4",
+                latency: "135ms",
+                stack: "n8n Credential Mgr / pdfplumber Layout Parser / Claude 3.5"
+            },
+            "Corporate HRIS Lifecycle & Gifting GTM Plan (Kageha)": {
+                container: "fr-kageha-lifecycle:v1.0",
+                pod: "kageha-commerce-1",
+                latency: "35ms",
+                stack: "HRIS Webhooks / ADP Integration / E-commerce Sync"
+            },
+            "Portfolio Finance & Board Control Center": {
+                container: "fr-finance-control:v2.0",
+                pod: "finance-replica-1",
+                latency: "155ms",
+                stack: "OAuth 2.0 Proxy / n8n Orchestrator / Postgres"
+            },
+            "Acumatica ERP API Integration": {
+                container: "fr-acumatica-connector:v1.0",
+                pod: "acumatica-sync-1",
+                latency: "112ms",
+                stack: "OAuth 2.0 Credentials / n8n Credential Mgr / Postgres"
+            },
+            "Energy-Savings Diligence & Paid PoV Packaging (Cascara)": {
+                container: "fr-cascara-pov:v1.0",
+                pod: "cascara-mvp-1",
+                latency: "40ms",
+                stack: "Diligence Memos / SOW Automation / Energy Savings SOW"
+            },
+            "Industrial Agent Portfolio (Invent)": {
+                container: "fr-industrial-invent:v1.0",
+                pod: "invent-agent-1",
+                latency: "75ms",
+                stack: "Quantifiable Metrics Model / ROI Tracker / Operations Logs"
+            },
+            "Metals Recycling HMI & Parts / Service Automation": {
+                container: "fr-metals-hmi:v1.0",
+                pod: "metals-mvp-1",
+                latency: "50ms",
+                stack: "HMI Blueprint Schema / Serial Database / KPI Tracker"
+            },
+            "Distributed Agent Host fleet (Tailscale Wireguard)": {
+                container: "fr-agent-tailnet:v3.2",
+                pod: "tailscale-fleet-master",
+                latency: "12ms",
+                stack: "Tailscale subnet routes / Linux Systemd / Wireguard Core"
+            },
+            "Session Memory Nexus (Honcho Relational Graph & PostgreSQL)": {
+                container: "fr-honcho-nexus:v2.1",
+                pod: "honcho-graph-db",
+                latency: "28ms",
+                stack: "Honcho Relational API / PostgreSQL Graph / Pinecone RAG"
+            },
+            "Opposing-Oracle Evaluator System": {
+                container: "fr-oracle-evaluator:v1.6",
+                pod: "evaluator-node-3",
+                latency: "185ms",
+                stack: "LangGraph adversarial loops / Custom Evaluator / Claude 3.5"
+            },
+            "Automated Docker Node Deployment": {
+                container: "fr-docker-provisioner:v2.0",
+                pod: "docker-master-1",
+                latency: "18ms",
+                stack: "Docker Swarm API / YAML Stack Parser / Bash Scripts"
+            },
+            "Cloud Forge compute nodes provisioning": {
+                container: "fr-cloudforge-node:v3.5",
+                pod: "forge-node-replica-5",
+                latency: "22ms",
+                stack: "Ubuntu Server LTS / Python Setup Exec / Web Audio API"
+            },
+            "x-post-fetcher Skill": {
+                container: "fr-twitter-fetcher:v1.1",
+                pod: "twitter-skill-1",
+                latency: "95ms",
+                stack: "Anthropic Skill Schema / fxtwitter API / Python BeautifulSoup"
+            },
+            "Consulting-Grade Slide Generation Skill (Chronicle Aesthetic, Codex)": {
+                container: "fr-slide-generation:v2.0",
+                pod: "slide-codex-1",
+                latency: "120ms",
+                stack: "Codex Slide Compiler / JSON Presentations / Canvas API"
+            },
+            "CLAUDE.md Compounding Pattern with Stop Hooks": {
+                container: "fr-claudemd-stophook:v1.0",
+                pod: "stophook-daemon-1",
+                latency: "15ms",
+                stack: "Shell exit triggers / Session Memory Extract / CLAUDE.md"
+            },
+            "Compute and Subscription Rationalization": {
+                container: "fr-spend-rationalizer:v1.0",
+                pod: "spend-audit-1",
+                latency: "30ms",
+                stack: "SaaS Job Mapping / Slot-map system / Cost Opt Audit"
+            }
+        };
+
+        function initializeHudSpecs() {
+            projectCards.forEach(card => {
+                const titleNode = card.querySelector('.project-title');
+                if (!titleNode) return;
+                
+                const title = titleNode.firstChild.textContent.trim();
+                const spec = hudSpecsData[title] || {
+                    container: "fr-generic-agent:v1.0",
+                    pod: "generic-pod-1",
+                    latency: "50ms",
+                    stack: "Claude-3.5-Sonnet / Python Orchestration"
+                };
+
+                const hudDiv = document.createElement('div');
+                hudDiv.className = 'hud-specs';
+                hudDiv.innerHTML = `
+                    <div style="font-weight: bold; margin-bottom: 2px;">⚡ SYSTEMS DIAGNOSTIC</div>
+                    <div>[POD] container: ${spec.container} | pod-node: ${spec.pod}</div>
+                    <div>[TELEMETRY] response-latency: ${spec.latency} | health: NOMINAL</div>
+                    <div>[RESOURCES] stack-signature: ${spec.stack}</div>
+                `;
+                card.appendChild(hudDiv);
+            });
+        }
+
+        // Initialize dynamic HUD specification blocks
+        initializeHudSpecs();
+
+        // GEEK HUD Button Controller
+        const hudToggle = document.getElementById('hud-toggle');
+        const hudStatusText = document.getElementById('hud-status-text');
+
+        hudToggle.addEventListener('click', () => {
+            const isActive = document.body.classList.toggle('hud-active');
+            if (isActive) {
+                hudStatusText.textContent = "GEEK HUD: ON";
+                hudToggle.style.backgroundColor = "rgba(56, 189, 248, 0.15)";
+                hudToggle.style.borderColor = "#38bdf8";
+                hudToggle.style.boxShadow = "0 0 12px rgba(56, 189, 248, 0.4)";
+                synth.playHackerChime();
+                printLogLine("[HUD] Systems Diagnostics heads-up display initialized. Grid loaded.", '#38bdf8');
+                startTelemetryDials();
+            } else {
+                hudStatusText.textContent = "GEEK HUD: OFF";
+                hudToggle.style.backgroundColor = "";
+                hudToggle.style.borderColor = "";
+                hudToggle.style.boxShadow = "";
+                synth.playSweep(false);
+            }
+        });
+
+        // Interactive CLI Input Controller
+        const userInput = document.getElementById('console-user-input');
+        let autoTypingActive = true;
+
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const command = userInput.value.trim().toLowerCase();
+                userInput.value = '';
+                if (!command) return;
+
+                // Stop auto typewriter
+                autoTypingActive = false;
+                synth.playBlip();
+
+                // Print input prompt line
+                printLogLine(`imagineer@firstratio:~$ ${command}`, '#a78bfa');
+
+                // Process command
+                setTimeout(() => {
+                    processCliCommand(command);
+                }, 100);
+            }
+        });
+
+        function printLogLine(text, color = '#38bdf8') {
+            const line = document.createElement('span');
+            line.className = 'console-line';
+            line.style.color = color;
+            line.textContent = text;
+            consoleBody.appendChild(line);
+            
+            // Keep console scrolled to bottom and cap children
+            while (consoleBody.children.length > 5) {
+                consoleBody.removeChild(consoleBody.firstChild);
+            }
+        }
+
+        function processCliCommand(command) {
+            const cmd = command.startsWith('/') ? command : '/' + command;
+            
+            if (cmd === '/help') {
+                printLogLine("SYS CMD: /help, /diagnose, /dream, /sysinfo, /pod, /about, /musitrust", '#fbbf24');
+            } else if (cmd === '/diagnose') {
+                printLogLine("[DIAG] Querying agent latency matrices... [OK]", '#34d399');
+                setTimeout(() => printLogLine("[DIAG] Tailscale Wireguard network routes secure (100.82.11.45)", '#38bdf8'), 200);
+                setTimeout(() => printLogLine("[DIAG] pdfplumber: Layout engine validated (4,203 nodes parsing)", '#fbbf24'), 400);
+                setTimeout(() => {
+                    printLogLine("[STATUS] System fleet: 100% operational. CPU: 12% | RAM: 1.84GB", '#34d399');
+                    synth.playChime();
+                }, 600);
+            } else if (cmd === '/dream') {
+                printLogLine("[DREAM] Consolidating memory graphs (Honcho database)...", '#a78bfa');
+                setTimeout(() => printLogLine("[DREAM] Consolidating opposing-oracle adversarial evaluations...", '#f472b6'), 300);
+                setTimeout(() => {
+                    printLogLine("[STATUS] Dream synced. Compounded sessions successfully committed to CLAUDE.md", '#34d399');
+                    synth.playChime();
+                }, 600);
+            } else if (cmd === '/sysinfo') {
+                printLogLine("[SYSINFO] OS: Kubernetes CoreOS | Host: Cloud Forge 03 Cluster", '#38bdf8');
+                printLogLine("[SYSINFO] Env: Tailscale VPN overlay, Docker Swarm node-replicas", '#38bdf8');
+                printLogLine("[SYSINFO] Stacks: Python 3.11, Claude 4.0 Sonnet, postgresql-15", '#fbbf24');
+            } else if (cmd === '/pod' || cmd === '/pods') {
+                printLogLine("[KUBECTL] GET PODS -n firstratio", '#c084fc');
+                setTimeout(() => printLogLine("fr-diligence-rag-replica-3    1/1    Running    0    12d", '#34d399'), 150);
+                setTimeout(() => printLogLine("fr-musitrust-agent-master-1   1/1    Running    0    3d", '#34d399'), 300);
+                setTimeout(() => printLogLine("fr-paperclip-cron-scheduler   1/1    Running    0    24d", '#34d399'), 450);
+            } else if (cmd === '/about') {
+                printLogLine("Cofounder & Principal AI Engineer @ FirstRatio Intelligence", '#a78bfa');
+                printLogLine("Building high-performing systems, data, and platform teams.", '#38bdf8');
+            } else if (cmd === '/musitrust') {
+                printLogLine("[AGENT] Launching Musitrust music distribution pilot engine...", '#fbbf24');
+                setTimeout(() => printLogLine("[DSP] Optimizing raw audio stream using Librosa & FFmpeg...", '#38bdf8'), 200);
+                setTimeout(() => printLogLine("[DSP] Distributing metadata payload to Spotify / Apple Music... [OK]", '#34d399'), 400);
+            } else {
+                printLogLine(`Command not found: ${command}. Type /help for assistance.`, '#ef4444');
+            }
+
+            });
+        }
+
+        // Initialize dynamic HUD specification blocks
+        initializeHudSpecs();
+
+        // GEEK HUD Button Controller
+        const hudToggle = document.getElementById('hud-toggle');
+        const hudStatusText = document.getElementById('hud-status-text');
+
+        hudToggle.addEventListener('click', () => {
+            const isActive = document.body.classList.toggle('hud-active');
+            if (isActive) {
+                hudStatusText.textContent = "GEEK HUD: ON";
+                hudToggle.style.backgroundColor = "rgba(56, 189, 248, 0.15)";
+                hudToggle.style.borderColor = "#38bdf8";
+                hudToggle.style.boxShadow = "0 0 12px rgba(56, 189, 248, 0.4)";
+                synth.playHackerChime();
+                printLogLine("[HUD] Systems Diagnostics heads-up display initialized. Grid loaded.", '#38bdf8');
+                startTelemetryDials();
+            } else {
+                hudStatusText.textContent = "GEEK HUD: OFF";
+                hudToggle.style.backgroundColor = "";
+                hudToggle.style.borderColor = "";
+                hudToggle.style.boxShadow = "";
+                synth.playSweep(false);
+                stopTelemetryDials();
+            }
+        });
+
+        // Telemetry Active Dials Ticker System
+        let telemetryInterval = null;
+
+        function startTelemetryDials() {
+            if (telemetryInterval) clearInterval(telemetryInterval);
+            
+            const cpuDial = document.getElementById('cpu-dial');
+            const agentDial = document.getElementById('agent-dial');
+            const memoryDial = document.getElementById('memory-dial');
+            
+            const cpuTxt = document.getElementById('cpu-dial-txt');
+            const agentTxt = document.getElementById('agent-dial-txt');
+            const memoryTxt = document.getElementById('memory-dial-txt');
+            
+            const pulseEl = document.getElementById('telemetry-pulse');
+            if (pulseEl) pulseEl.style.backgroundColor = '#22c55e'; // Green pulse active!
+            
+            function tick() {
+                const cpuVal = Math.floor(Math.random() * 18 + 8);
+                const agentVal = Math.floor(Math.random() * 14 + 28);
+                const memoryVal = Math.floor(Math.random() * 8 + 44);
+                
+                if (cpuDial) {
+                    cpuDial.setAttribute('stroke-dasharray', `${cpuVal}, 100`);
+                    cpuTxt.textContent = `${cpuVal}%`;
+                }
+                if (agentDial) {
+                    const agentPerc = (agentVal / 50) * 100;
+                    agentDial.setAttribute('stroke-dasharray', `${agentPerc}, 100`);
+                    agentTxt.textContent = agentVal;
+                }
+                if (memoryDial) {
+                    memoryDial.setAttribute('stroke-dasharray', `${memoryVal}, 100`);
+                    memoryTxt.textContent = `${memoryVal}%`;
+                }
+            }
+            
+            tick();
+            telemetryInterval = setInterval(tick, 1500);
+        }
+
+        function stopTelemetryDials() {
+            if (telemetryInterval) {
+                clearInterval(telemetryInterval);
+                telemetryInterval = null;
+            }
+            const pulseEl = document.getElementById('telemetry-pulse');
+            if (pulseEl) pulseEl.style.backgroundColor = '#ef4444'; // Red offline pulse
+            
+            ['cpu', 'agent', 'memory'].forEach(id => {
+                const dial = document.getElementById(`${id}-dial`);
+                const txt = document.getElementById(`${id}-dial-txt`);
+                if (dial) dial.setAttribute('stroke-dasharray', `0, 100`);
+                if (txt) txt.textContent = id === 'agent' ? '0' : '0%';
+            });
+        }
+
+        // Interactive CLI Input Controller
+        const userInput = document.getElementById('console-user-input');
+        let autoTypingActive = true;
+
+        userInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const command = userInput.value.trim().toLowerCase();
+                userInput.value = '';
+                if (!command) return;
+
+                // Stop auto typewriter
+                autoTypingActive = false;
+                synth.playBlip();
+
+                // Print input prompt line
+                printLogLine(`imagineer@firstratio:~$ ${command}`, '#a78bfa');
+
+                // Process command
+                setTimeout(() => {
+                    processCliCommand(command);
+                }, 100);
+            }
+        });
+
+        function printLogLine(text, color = '#38bdf8') {
+            const line = document.createElement('span');
+            line.className = 'console-line';
+            line.style.color = color;
+            line.textContent = text;
+            consoleBody.appendChild(line);
+            
+            // Keep console scrolled to bottom and cap children
+            while (consoleBody.children.length > 5) {
+                consoleBody.removeChild(consoleBody.firstChild);
+            }
+        }
+
+        function processCliCommand(command) {
+            const cmd = command.startsWith('/') ? command : '/' + command;
+            
+            if (cmd === '/help') {
+                printLogLine("SYS CMD: /help, /diagnose, /dream, /sysinfo, /pod, /about, /musitrust", '#fbbf24');
+            } else if (cmd === '/diagnose') {
+                printLogLine("[DIAG] Querying agent latency matrices... [OK]", '#34d399');
+                setTimeout(() => printLogLine("[DIAG] Tailscale Wireguard network routes secure (100.82.11.45)", '#38bdf8'), 200);
+                setTimeout(() => printLogLine("[DIAG] pdfplumber: Layout engine validated (4,203 nodes parsing)", '#fbbf24'), 400);
+                setTimeout(() => {
+                    printLogLine("[STATUS] System fleet: 100% operational. CPU: 12% | RAM: 1.84GB", '#34d399');
+                    synth.playChime();
+                }, 600);
+            } else if (cmd === '/dream') {
+                printLogLine("[DREAM] Consolidating memory graphs (Honcho database)...", '#a78bfa');
+                setTimeout(() => printLogLine("[DREAM] Consolidating opposing-oracle adversarial evaluations...", '#f472b6'), 300);
+                setTimeout(() => {
+                    printLogLine("[STATUS] Dream synced. Compounded sessions successfully committed to CLAUDE.md", '#34d399');
+                    synth.playChime();
+                }, 600);
+            } else if (cmd === '/sysinfo') {
+                printLogLine("[SYSINFO] OS: Kubernetes CoreOS | Host: Cloud Forge 03 Cluster", '#38bdf8');
+                printLogLine("[SYSINFO] Env: Tailscale VPN overlay, Docker Swarm node-replicas", '#38bdf8');
+                printLogLine("[SYSINFO] Stacks: Python 3.11, Claude 4.0 Sonnet, postgresql-15", '#fbbf24');
+            } else if (cmd === '/pod' || cmd === '/pods') {
+                printLogLine("[KUBECTL] GET PODS -n firstratio", '#c084fc');
+                setTimeout(() => printLogLine("fr-diligence-rag-replica-3    1/1    Running    0    12d", '#34d399'), 150);
+                setTimeout(() => printLogLine("fr-musitrust-agent-master-1   1/1    Running    0    3d", '#34d399'), 300);
+                setTimeout(() => printLogLine("fr-paperclip-cron-scheduler   1/1    Running    0    24d", '#34d399'), 450);
+            } else if (cmd === '/about') {
+                printLogLine("Cofounder & Principal AI Engineer @ FirstRatio Intelligence", '#a78bfa');
+                printLogLine("Building high-performing systems, data, and platform teams.", '#38bdf8');
+            } else if (cmd === '/musitrust') {
+                printLogLine("[AGENT] Launching Musitrust music distribution pilot engine...", '#fbbf24');
+                setTimeout(() => printLogLine("[DSP] Optimizing raw audio stream using Librosa & FFmpeg...", '#38bdf8'), 200);
+                setTimeout(() => printLogLine("[DSP] Distributing metadata payload to Spotify / Apple Music... [OK]", '#34d399'), 400);
+            } else {
+                printLogLine(`Command not found: ${command}. Type /help for assistance.`, '#ef4444');
+            }
+
+            // Resume auto-typing after 15 seconds of inactivity
+            setTimeout(() => {
+                if (!autoTypingActive) {
+                    autoTypingActive = true;
+                    lineIndex = 0;
+                    typeConsoleLine();
+                }
+            }, 15000);
+        }
+
+        // ==========================================
+        // DYNAMIC SVG SYSTEMS ARCHITECTURE GRAPH
+        // ==========================================
+        const flowchartSpecs = {
+            "pe-diligence": {
+                nodes: ["Deal Data Rooms", "pdfplumber Parser", "Honcho RAG", "Claude 3.5", "Gap Report"],
+                descs: {
+                    "Deal Data Rooms": "Ingests multi-gigabyte heterogeneous private equity deal data rooms.",
+                    "pdfplumber Parser": "Extracts bounding-box text coordinates, table structures, and complex document hierarchies.",
+                    "Honcho RAG": "Orchestrates database vector indexing, relational graphs, and cross-session audit memory.",
+                    "Claude 3.5": "Reviews target checklists and coordinates adversarial opposing-oracle validation checks.",
+                    "Gap Report": "Compiles comprehensive gap analyses and structured investor reports for PE platforms."
+                }
+            },
+            "operations": {
+                nodes: ["HRIS Webhooks", "Paperclip Queue", "FFmpeg Engine", "Copyright API", "DSP Outbound"],
+                descs: {
+                    "HRIS Webhooks": "Listens for milestone employee triggers (onboarding, contract status) across HR databases.",
+                    "Paperclip Queue": "Coordinates high-throughput asynchronous agent tasks, budget locks, and retry queues.",
+                    "FFmpeg Engine": "Analyzes upload audio codecs, Masters dynamic ranges, and enhances audio track vectors.",
+                    "Copyright API": "Validates musical fingerprint files against global copyright registries for legal compliance.",
+                    "DSP Outbound": "Publishes mastered files and validated metadata to Spotify, Apple, and Amazon Music."
+                }
+            },
+            "finance-erp": {
+                nodes: ["ERP Connect", "OAuth Proxy", "n8n Reconciler", "Postgres Heap", "Board Package"],
+                descs: {
+                    "ERP Connect": "Connects programmatically to Acumatica Connected Applications and payroll ledger APIs.",
+                    "OAuth Proxy": "Retrieves secure connect-application credential tokens using credentials password grants.",
+                    "n8n Reconciler": "Classifies ledger spend, filters recurring SaaS seats, and computes AP/AR ratios.",
+                    "Postgres Heap": "Caches transactional ledgers, reconciles bank lines, and stores operational spend logs.",
+                    "Board Package": "Compiles PPTX analytical presentations and board decks for holding company portals."
+                }
+            },
+            "industrial": {
+                nodes: ["Field Console", "HMI Monitor", "Serial Database", "parts Agent", "Order Dispatch"],
+                descs: {
+                    "Field Console": "Captures equipment metrics, serial tags, and hardware inputs directly from physical loaders.",
+                    "HMI Monitor": "Presents dynamic work order matrices and serialize checklists to metal recycling crews.",
+                    "Serial Database": "Maps physical serial parts to structural schemas to prepare for agent queries.",
+                    "parts Agent": "Scrapes online catalogs and supplier API hooks to procure optimal industrial gear sizes.",
+                    "Order Dispatch": "Autogenerates purchase orders, routes parts, and dispatches ticketing alerts to field teams."
+                }
+            },
+            "infrastructure": {
+                nodes: ["Tailnet Nodes", "Paperclip Host", "Honcho Postgres", "Adversarial Loops", "Dream Sync"],
+                descs: {
+                    "Tailnet Nodes": "Routes secure private traffic across distributed server hosts using Wireguard network meshes.",
+                    "Paperclip Host": "Maintains fleet budget limits, deploys docker containers, and manages micro-agent allocations.",
+                    "Honcho Postgres": "Stores persistent agent session logs, memory arrays, and relational vector associations.",
+                    "Adversarial Loops": "Manages adversarial LLMs to evaluate, verify, and cross-validate agent decisions.",
+                    "Dream Sync": "Extracts learning parameters across active sessions and updates core repository memory nodes."
+                }
+            },
+            "reusable-skills": {
+                nodes: ["Outline Brief", "Codex Slide Compiler", "Chronicle API", "Stop Hooks", "CLAUDE.md Memory"],
+                descs: {
+                    "Outline Brief": "Ingests bullet outlines, briefing drafts, and structural templates from users.",
+                    "Codex Slide Compiler": "Processes text drafts against Bain, BCG, and McKinsey design schemas.",
+                    "Chronicle API": "Outputs compiled JSON templates to presentation renderers (Canva, Gamma).",
+                    "Stop Hooks": "Intercepts session terminations, extracts lessons, and aggregates developer rules.",
+                    "CLAUDE.md Memory": "Saves compiled environment guidelines directly to workspace guidelines to compound intelligence."
+                }
+            },
+            "efficiency": {
+                nodes: ["Spend Portfolio", "Job Slot Map", "Doctrine Filters", "Rationalizer", "Cost Savings"],
+                descs: {
+                    "Spend Portfolio": "Tracks SaaS spend allocations, developer licenses, and active credit cards.",
+                    "Job Slot Map": "Structures exactly one approved platform application per operational job.",
+                    "Doctrine Filters": "Evaluates duplicates, identifies negotiate-ready tiers, and flags idle accounts.",
+                    "Rationalizer": "Negotiates seat limits, downscales redundant licenses, and structures terms.",
+                    "Cost Savings": "Delivers immediate cash overhead optimization directly to company P&L sheets."
+                }
+            }
+        };
+
+        function drawModalFlowchart(realmId) {
+            const container = document.getElementById('flowchart-svg-container');
+            const descEl = document.getElementById('flowchart-node-desc');
+            if (!container) return;
+            container.innerHTML = '';
+            descEl.textContent = 'Hover over nodes to analyze component blueprints...';
+            
+            const spec = flowchartSpecs[realmId] || flowchartSpecs['pe-diligence'];
+            const nodes = spec.nodes;
+            const descs = spec.descs;
+            
+            const svgHeight = 160;
+            let svgHtml = `<svg width="100%" height="${svgHeight}" viewBox="0 0 500 160" style="overflow: visible;">`;
+            
+            svgHtml += `
+                <defs>
+                    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
+                        <stop offset="50%" stop-color="#a78bfa" stop-opacity="0.8" />
+                        <stop offset="100%" stop-color="#34d399" stop-opacity="0.3" />
+                    </linearGradient>
+                </defs>
+            `;
+            
+            // X-Y coordinate mappings for flow nodes
+            const xCoords = [35, 145, 255, 365, 465];
+            const yCoords = [65, 65, 65, 65, 65];
+            
+            // Drawing smooth curved paths
+            for (let i = 0; i < xCoords.length - 1; i++) {
+                const cx1 = xCoords[i] + 45;
+                const cy1 = yCoords[i] - 10;
+                const cx2 = xCoords[i+1] - 45;
+                const cy2 = yCoords[i+1] + 10;
+                
+                svgHtml += `
+                    <path d="M ${xCoords[i]} ${yCoords[i]} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${xCoords[i+1]} ${yCoords[i+1]}" 
+                          fill="none" 
+                          stroke="url(#glowGrad)" 
+                          stroke-width="2.5" 
+                          stroke-dasharray="6, 5" 
+                          style="animation: flow-packet 3s infinite linear;" />
+                `;
+            }
+            
+            // Drawing visual node groups
+            nodes.forEach((node, idx) => {
+                const x = xCoords[idx];
+                const y = yCoords[idx];
+                const colors = ['#38bdf8', '#fbbf24', '#a78bfa', '#34d399', '#f472b6'];
+                const nodeColor = colors[idx % colors.length];
+                const label = node.length > 13 ? node.substring(0, 11) + '..' : node;
+                
+                svgHtml += `
+                    <g class="flow-node-group" style="cursor: pointer;" 
+                       onmouseenter="document.getElementById('flowchart-node-desc').textContent = '${descs[node]}'; document.getElementById('flowchart-node-desc').style.color = '${nodeColor}'; synth.playBlip();"
+                       onmouseleave="document.getElementById('flowchart-node-desc').textContent = 'Hover over nodes to analyze component blueprints...'; document.getElementById('flowchart-node-desc').style.color = '#a78bfa';">
+                        <circle cx="${x}" cy="${y}" r="17" fill="#04020a" stroke="${nodeColor}" stroke-width="3" style="filter: drop-shadow(0 0 5px ${nodeColor});" />
+                        <circle cx="${x}" cy="${y}" r="5" fill="${nodeColor}" class="flow-center-dot" style="animation: pulse-node 2s infinite ease-in-out;" />
+                        <text x="${x}" y="${y + 30}" text-anchor="middle" font-family="'Courier New', monospace" font-size="8.5px" font-weight="bold" fill="#ffffff" style="text-shadow: 0 1px 4px rgba(0,0,0,0.8);">${label}</text>
+                    </g>
+                `;
+            });
+            
+            svgHtml += '</svg>';
+            container.innerHTML = svgHtml;
+        }
+
+        // Sound Synthesizer Control Board Hooks
+        const pitchSlider = document.getElementById('synth-pitch');
+        const pitchValEl = document.getElementById('synth-pitch-val');
+        const gainSlider = document.getElementById('synth-gain');
+        const waveButtons = document.querySelectorAll('.synth-wave-btn');
+
+        pitchSlider.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            synth.pitchFreq = val;
+            pitchValEl.textContent = `${val}Hz`;
+            synth.playBlip();
+        });
+
+        gainSlider.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value) / 10;
+            synth.masterGainMultiplier = val;
+            synth.playBlip();
+        });
+
+        waveButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                synth.playChime();
+                waveButtons.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'none';
+                    b.style.borderColor = 'rgba(129, 140, 248, 0.3)';
+                    b.style.color = 'var(--text-muted)';
+                });
+                btn.classList.add('active');
+                btn.style.background = '';
+                btn.style.borderColor = '';
+                btn.style.color = '';
+                
+                const wave = btn.getAttribute('data-wave');
+                synth.waveType = wave;
+                
+                printLogLine(`[SYNTH] Carrier waveform adjusted to: ${wave.toUpperCase()}`, '#a78bfa');
+            });
+        });
+    </script>
+</body>
+</html>

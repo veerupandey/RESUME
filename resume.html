@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rakesh Pandey - Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Modern Typography: Outfit for headers, Inter for premium body clarity -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Modern Design System & Token Variables */
+        :root {
+            --primary-color: #0f172a;  /* Very Slate Black/Navy */
+            --accent-color: #0369a1;   /* Modern Teal/Sky Blue */
+            --text-color: #334155;     /* Slate Gray for highly legible body */
+            --border-color: #cbd5e1;   /* Clean Timeline color */
+            --bg-pill: #f0f9ff;        /* Soft Blue Accent for skills background */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-color);
+            line-height: 1.38;
+            background-color: #ffffff;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0.35in 0.45in;
+        }
+
+        /* Executive Header Styling */
+        header {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+
+        .title {
+            font-family: var(--font-heading);
+            font-size: 13.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #0369a1 0%, #4f46e5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 4px;
+            display: inline-block;
+        }
+
+        /* Contact Details Header */
+        .contact-info {
+            font-size: 9.5px;
+            font-weight: 500;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            color: #64748b;
+            margin-top: 6px;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-separator {
+            color: #e2e8f0;
+        }
+
+        /* Section Headings */
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-color);
+            margin-top: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: #e2e8f0;
+            margin-left: 12px;
+        }
+
+        /* Premium Timeline Layout */
+        .timeline-container {
+            position: relative;
+            border-left: 2px solid var(--border-color);
+            margin-left: 6px;
+            padding-left: 18px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -24px; /* Align dot perfectly onto the timeline line */
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 1px var(--accent-color);
+        }
+
+        /* Block headers */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .item-title {
+            font-family: var(--font-heading);
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .item-date {
+            font-family: var(--font-heading);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+
+        .item-meta {
+            font-size: 11px;
+            font-weight: 400;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        /* Lists and Bullets */
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            font-size: 10.5px;
+            font-weight: 400;
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 3px;
+            text-align: justify;
+            color: var(--text-color);
+        }
+
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 2px;
+            top: -1px;
+            font-size: 10px;
+            color: var(--accent-color);
+        }
+
+        /* Highlights class for specific project/tool names */
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Skills Pill Layout */
+        .skills-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 6px;
+            padding-left: 6px;
+        }
+
+        .skills-group {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 10px;
+        }
+
+        .skills-group-title {
+            font-family: var(--font-heading);
+            font-size: 10.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-color);
+            margin-bottom: 6px;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .skill-pill {
+            font-size: 9.5px;
+            font-weight: 500;
+            background-color: var(--bg-pill);
+            color: var(--accent-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid #bae6fd;
+            white-space: nowrap;
+        }
+
+        /* Standard education blocks */
+        .edu-item {
+            margin-bottom: 8px;
+            padding-left: 6px;
+        }
+
+        /* Page Layout & Printing Optimizations */
+        @media print {
+            @page {
+                size: letter;
+                margin: 0.45in 0.45in 0.45in 0.45in;
+            }
+            body {
+                background: #ffffff;
+                font-size: 10.5px;
+            }
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-top">
+                <div>
+                    <h1>Rakesh Pandey</h1>
+                    <div class="title">Principal AI & Data Architect</div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <span>rakeshpandey820@gmail.com</span>
+                <span class="contact-separator">|</span>
+                <span>+1 236 978 0550</span>
+                <span class="contact-separator">|</span>
+                <span>Vancouver, Canada</span>
+                <span class="contact-separator">|</span>
+                <a href="https://linkedin.com/in/rakeshpandey820" target="_blank">linkedin.com/in/rakeshpandey820</a>
+            </div>
+        </header>
+
+        <!-- Education Section -->
+        <section>
+            <h2>Education</h2>
+            <div class="edu-item">
+                <div class="item-header">
+                    <span class="item-title">Master of Data Science</span>
+                    <span class="item-date">June 2022</span>
+                </div>
+                <div class="item-meta">The University of British Columbia (UBC) <span class="contact-separator">•</span> Grade: A+, 4/4 <span class="contact-separator">•</span> Vancouver</div>
+                <ul>
+                    <li>Worked with <span class="highlight">TRIUMF</span> and the CERN lab on NA62 experiment to develop a <span class="highlight">deep learning classifier</span> capable of identifying pion, muon, and positron particles with at least 95% pion efficiency while keeping muon to pion misclassification rate less than 0.1. PyTorch was used to implement a customized Point Net and Dynamic Graph CNN.</li>
+                </ul>
+            </div>
+
+            <div class="edu-item" style="margin-bottom: 4px;">
+                <div class="item-header">
+                    <span class="item-title">Bachelor of Technology, Computer Science and Engineering</span>
+                    <span class="item-date">July 2014</span>
+                </div>
+                <div class="item-meta">Karunya University, India <span class="contact-separator">•</span> 8.3 out of 10 GPA</div>
+                <ul>
+                    <li>Received “Best Project Award” for my project “Web Based Penetration Testing Toolkit”, <a href="https://github.com/veerupandey/Penetration-Testing-Toolkit" class="highlight" target="_blank">https://github.com/veerupandey/Penetration-Testing-Toolkit</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section (Premium Pills) -->
+        <section>
+            <h2>Skills</h2>
+            <div class="skills-block">
+                <div class="skills-group">
+                    <div class="skills-group-title">AI & ML Engineering</div>
+                    <div class="skills-list">
+                        <span class="skill-pill">Large Language Models (LLMs)</span>
+                        <span class="skill-pill">Agentic Workflows</span>
+                        <span class="skill-pill">MLOps/LLMOps</span>
+                        <span class="skill-pill">Computer Vision</span>
+                        <span class="skill-pill">Deep Learning</span>
+                        <span class="skill-pill">PyTorch</span>
+                        <span class="skill-pill">MLFlow</span>
+                        <span class="skill-pill">PySpark</span>
+                        <span class="skill-pill">Databricks</span>
+                        <span class="skill-pill">Predictive Modeling</span>
+                    </div>
+                </div>
+                <div class="skills-group">
+                    <div class="skills-group-title">Data Engineering</div>
+                    <div class="skills-list">
+                        <span class="skill-pill">GCP</span>
+                        <span class="skill-pill">Azure</span>
+                        <span class="skill-pill">AWS</span>
+                        <span class="skill-pill">Data Lakes</span>
+                        <span class="skill-pill">Kafka</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">Apache Spark</span>
+                        <span class="skill-pill">Airflow</span>
+                        <span class="skill-pill">CI/CD</span>
+                        <span class="skill-pill">API Design</span>
+                        <span class="skill-pill">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience Section -->
+        <section>
+            <h2>Professional Experience</h2>
+            <div class="timeline-container">
+                
+                <!-- FirstRatio Intelligence -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">Cofounder &amp; Principal AI Engineer</span>
+                        <span class="item-date">January 2025 – Present</span>
+                    </div>
+                    <div class="item-meta">FirstRatio Intelligence, Canada <span class="contact-separator">•</span> <a href="portfolio.html" class="highlight" target="_blank">Detailed Projects Portfolio</a></div>
+                    <ul>
+                        <li><strong>Engineering Leadership:</strong> Led a team of software and AI/ML engineers to design, build, and deploy custom agentic solutions, advanced MLOps platforms, and enterprise data workflows for holding companies and startups.</li>
+                        <li><strong>Musitrust LLC Music Agent:</strong> Architected a complex conversational agent system that automates music optimization, validates metadata, runs automated copyright verification, and coordinates cross-platform streaming distribution.</li>
+                        <li><strong>PE/M&A Due Diligence System:</strong> Engineered an agentic PE Data Room RAG system with a Planner-Generator-Evaluator harness that differentially audits deal memos against Excel models and source PDFs.</li>
+                        <li><strong>Agent Fleet &amp; Memory Infrastructure:</strong> Deployed an 8-node distributed Tailscale agent fleet (Slot-Map) managed by the Paperclip control plane and powered by self-hosted Honcho Postgres memory graphs.</li>
+                    </ul>
+                </div>
+
+                <!-- ICBC -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">Team Lead - AI and ML Engineering</span>
+                        <span class="item-date">January 2023 – Present</span>
+                    </div>
+                    <div class="item-meta">ICBC (Insurance Corporation of British Columbia), Canada</div>
+                    <ul>
+                        <li>Led a team of AI/ML engineers to design and deploy an enterprise-grade AI fraud detection model to replace a legacy commercial solution, significantly increasing detection accuracy and reducing false-positive claims.</li>
+                        <li>Spearheaded a team to design and develop an interactive fraud visualizer enabling claims investigators to trace, analyze, and map complex fraud patterns and network links.</li>
+                        <li>Designed an AI agent liability resolution predictor utilizing agentic workflows to assist claim adjusters in automatically determining liability during the First Notice of Loss (FNOL) phase.</li>
+                        <li>Developed a multi-agent system to aggregate and summarize unstructured claim notes, customer conversation checkpoints, medical records, and other auxiliary documentation, streamlining claims adjudication.</li>
+                        <li>Built a dashboard-to-agent pipeline where selecting anomalous data points on a Tableau KPI dashboard triggers automated agents with cross-dataset access to perform deep-dive root-cause investigations.</li>
+                        <li>Implemented a computer vision vehicle damage assessment pipeline (Mitchell-style) that automatically analyzes damage photos to estimate repair costs and assess damage severity.</li>
+                    </ul>
+                </div>
+
+                <!-- Wavicle Data Solutions -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">ML Architect</span>
+                        <span class="item-date">November 2022 – January 2023</span>
+                    </div>
+                    <div class="item-meta">Wavicle Data Solutions</div>
+                    <ul>
+                        <li>Led Databricks adoption for a client to optimize and streamline machine learning workflows.</li>
+                    </ul>
+                </div>
+
+                <!-- Publicis Sapient -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">Manager Data Engineering</span>
+                        <span class="item-date">July 2022 – November 2022</span>
+                    </div>
+                    <div class="item-meta">Publicis Sapient, Canada</div>
+                    <ul>
+                        <li>Retail Media Network - Worked with two retail clients in US to understand current state of AdTech and MarTech and suggested future data pipelines and solution architecture on Google Cloud Platform in order to create an integrated and seamless platform to manage omni-channel campaigns with better measurements and engagement.</li>
+                    </ul>
+                </div>
+
+                <!-- Boston Consulting Group -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">Senior Analyst</span>
+                        <span class="item-date">January 2019 – August 2021</span>
+                    </div>
+                    <div class="item-meta">Boston Consulting Group, Gurgaon, India</div>
+                    <ul>
+                        <li>For a leading retailer, led a team to modernize the existing legacy data solution and created a suite of digital commercial tools to help buyers and category managers on Azure using Tableau, PySpark, Azure Databricks, and Azure Data Factory.</li>
+                        <li>For an airline client, worked on building a cloud native performance revenue tracking system to track revenue at various level of granularity using Azure Data Factory, Spark, Databricks, Azure Synapse. Received “Client Impact Award” for bringing next phase of project to the team.</li>
+                        <li>Led a team of Data Engineers and Scientists to build a customer 360 (C360) project for one of the largest telecom operators in SEA to provide a 360-degree customer view to the business and data science teams using AWS S3, Glue, Athena etc. Featured as “Most Trusted engineer” in BCG GAMMA newsletter.</li>
+                        <li>Developed a set of ML models for a telecom client to recommend offers based on customer lifetime management in order to increase prepaid subscriber base revenues. This results in a net revenue increase of 4% for the target group. Received “Project Excellence Award”. Solution was build using Python, Spark and MLFlow on Azure Databricks.</li>
+                    </ul>
+                </div>
+
+                <!-- Dunnhumby India -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">Data Developer</span>
+                        <span class="item-date">March 2017 – December 2019</span>
+                    </div>
+                    <div class="item-meta">Dunnhumby India, Gurugram, India</div>
+                    <ul>
+                        <li>Helped in the modernization of an on-premises SAS data pipeline to the Google cloud using Dataproc (Pyspark, Hive), Big Query, and Cloud Composer (Airflow). Created a generic framework for ingesting, transforming, and analyzing retail data.</li>
+                        <li>Contributed to designing/building CI/CD pipeline for running unit, integration, and behave tests.</li>
+                        <li>Worked with Data Scientists and Business to move existing analytical solutions and machine learning models to Google Cloud.</li>
+                        <li>Received "Data Expert" for my outstanding contribution to the project.</li>
+                    </ul>
+                </div>
+
+                <!-- Everlytics Data Science LLP -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">Data Scientist</span>
+                        <span class="item-date">March 2016 – March 2017</span>
+                    </div>
+                    <div class="item-meta">Everlytics Data Science LLP, Bengaluru, India</div>
+                    <ul>
+                        <li>Designed, developed, and maintained a pipeline for consuming terabytes of log data per day in near real time from hundreds of machines for an Internet Archive using Lua, Kafka, Elasticsearch, Python, Influx DB, Grafana.</li>
+                        <li>Contributed to the development of <span class="highlight">“Predictive Maintenance Framework”</span>, which is used to detect machine failure and recommend corrective actions for a variety of clients. Developed machine learning models to detect failures before they occur.</li>
+                    </ul>
+                </div>
+
+                <!-- Capgemini India -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <span class="item-title">Software Engineer (Business Intelligence)</span>
+                        <span class="item-date">October 2014 – February 2016</span>
+                    </div>
+                    <div class="item-meta">Capgemini India, Mumbai, India</div>
+                    <ul>
+                        <li>Built a new module for a German telecom client which includes data flow from multiple customer support system and product sales team, to provide a complete overview of a customer request and timely resolution of complaints using Shell Scripting, Oracle SQL/PL-SQL and IBM Cognos.</li>
+                        <li>Received “Rising Star Award” for the extra ordinary performance on the project.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
