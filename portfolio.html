@@ -2539,8 +2539,10 @@
         const consoleBody = document.getElementById('console-output');
         consoleBody.innerHTML = '';
         let lineIndex = 0;
+        let autoTypingActive = true;
 
         function typeConsoleLine() {
+            if (!autoTypingActive) return;
             if (lineIndex >= consoleLines.length) {
                 lineIndex = 0;
                 consoleBody.innerHTML = '';
@@ -3183,136 +3185,6 @@
         // Initialize dynamic HUD specification blocks
         initializeHudSpecs();
 
-        // GEEK HUD Button Controller
-        const hudToggle = document.getElementById('hud-toggle');
-        const hudStatusText = document.getElementById('hud-status-text');
-
-        hudToggle.addEventListener('click', () => {
-            const isActive = document.body.classList.toggle('hud-active');
-            if (isActive) {
-                hudStatusText.textContent = "GEEK HUD: ON";
-                hudToggle.style.backgroundColor = "rgba(56, 189, 248, 0.15)";
-                hudToggle.style.borderColor = "#38bdf8";
-                hudToggle.style.boxShadow = "0 0 12px rgba(56, 189, 248, 0.4)";
-                synth.playHackerChime();
-                printLogLine("[HUD] Systems Diagnostics heads-up display initialized. Grid loaded.", '#38bdf8');
-                startTelemetryDials();
-            } else {
-                hudStatusText.textContent = "GEEK HUD: OFF";
-                hudToggle.style.backgroundColor = "";
-                hudToggle.style.borderColor = "";
-                hudToggle.style.boxShadow = "";
-                synth.playSweep(false);
-            }
-        });
-
-        // Interactive CLI Input Controller
-        const userInput = document.getElementById('console-user-input');
-        let autoTypingActive = true;
-
-        userInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const command = userInput.value.trim().toLowerCase();
-                userInput.value = '';
-                if (!command) return;
-
-                // Stop auto typewriter
-                autoTypingActive = false;
-                synth.playBlip();
-
-                // Print input prompt line
-                printLogLine(`imagineer@firstratio:~$ ${command}`, '#a78bfa');
-
-                // Process command
-                setTimeout(() => {
-                    processCliCommand(command);
-                }, 100);
-            }
-        });
-
-        function printLogLine(text, color = '#38bdf8') {
-            const line = document.createElement('span');
-            line.className = 'console-line';
-            line.style.color = color;
-            line.textContent = text;
-            consoleBody.appendChild(line);
-            
-            // Keep console scrolled to bottom and cap children
-            while (consoleBody.children.length > 5) {
-                consoleBody.removeChild(consoleBody.firstChild);
-            }
-        }
-
-        function processCliCommand(command) {
-            const cmd = command.startsWith('/') ? command : '/' + command;
-            
-            if (cmd === '/help') {
-                printLogLine("SYS CMD: /help, /diagnose, /dream, /sysinfo, /pod, /about, /musitrust", '#fbbf24');
-            } else if (cmd === '/diagnose') {
-                printLogLine("[DIAG] Querying agent latency matrices... [OK]", '#34d399');
-                setTimeout(() => printLogLine("[DIAG] Tailscale Wireguard network routes secure (100.82.11.45)", '#38bdf8'), 200);
-                setTimeout(() => printLogLine("[DIAG] pdfplumber: Layout engine validated (4,203 nodes parsing)", '#fbbf24'), 400);
-                setTimeout(() => {
-                    printLogLine("[STATUS] System fleet: 100% operational. CPU: 12% | RAM: 1.84GB", '#34d399');
-                    synth.playChime();
-                }, 600);
-            } else if (cmd === '/dream') {
-                printLogLine("[DREAM] Consolidating memory graphs (Honcho database)...", '#a78bfa');
-                setTimeout(() => printLogLine("[DREAM] Consolidating opposing-oracle adversarial evaluations...", '#f472b6'), 300);
-                setTimeout(() => {
-                    printLogLine("[STATUS] Dream synced. Compounded sessions successfully committed to CLAUDE.md", '#34d399');
-                    synth.playChime();
-                }, 600);
-            } else if (cmd === '/sysinfo') {
-                printLogLine("[SYSINFO] OS: Kubernetes CoreOS | Host: Cloud Forge 03 Cluster", '#38bdf8');
-                printLogLine("[SYSINFO] Env: Tailscale VPN overlay, Docker Swarm node-replicas", '#38bdf8');
-                printLogLine("[SYSINFO] Stacks: Python 3.11, Claude 4.0 Sonnet, postgresql-15", '#fbbf24');
-            } else if (cmd === '/pod' || cmd === '/pods') {
-                printLogLine("[KUBECTL] GET PODS -n firstratio", '#c084fc');
-                setTimeout(() => printLogLine("fr-diligence-rag-replica-3    1/1    Running    0    12d", '#34d399'), 150);
-                setTimeout(() => printLogLine("fr-musitrust-agent-master-1   1/1    Running    0    3d", '#34d399'), 300);
-                setTimeout(() => printLogLine("fr-paperclip-cron-scheduler   1/1    Running    0    24d", '#34d399'), 450);
-            } else if (cmd === '/about') {
-                printLogLine("Cofounder & Principal AI Engineer @ FirstRatio Intelligence", '#a78bfa');
-                printLogLine("Building high-performing systems, data, and platform teams.", '#38bdf8');
-            } else if (cmd === '/musitrust') {
-                printLogLine("[AGENT] Launching Musitrust music distribution pilot engine...", '#fbbf24');
-                setTimeout(() => printLogLine("[DSP] Optimizing raw audio stream using Librosa & FFmpeg...", '#38bdf8'), 200);
-                setTimeout(() => printLogLine("[DSP] Distributing metadata payload to Spotify / Apple Music... [OK]", '#34d399'), 400);
-            } else {
-                printLogLine(`Command not found: ${command}. Type /help for assistance.`, '#ef4444');
-            }
-
-            });
-        }
-
-        // Initialize dynamic HUD specification blocks
-        initializeHudSpecs();
-
-        // GEEK HUD Button Controller
-        const hudToggle = document.getElementById('hud-toggle');
-        const hudStatusText = document.getElementById('hud-status-text');
-
-        hudToggle.addEventListener('click', () => {
-            const isActive = document.body.classList.toggle('hud-active');
-            if (isActive) {
-                hudStatusText.textContent = "GEEK HUD: ON";
-                hudToggle.style.backgroundColor = "rgba(56, 189, 248, 0.15)";
-                hudToggle.style.borderColor = "#38bdf8";
-                hudToggle.style.boxShadow = "0 0 12px rgba(56, 189, 248, 0.4)";
-                synth.playHackerChime();
-                printLogLine("[HUD] Systems Diagnostics heads-up display initialized. Grid loaded.", '#38bdf8');
-                startTelemetryDials();
-            } else {
-                hudStatusText.textContent = "GEEK HUD: OFF";
-                hudToggle.style.backgroundColor = "";
-                hudToggle.style.borderColor = "";
-                hudToggle.style.boxShadow = "";
-                synth.playSweep(false);
-                stopTelemetryDials();
-            }
-        });
-
         // Telemetry Active Dials Ticker System
         let telemetryInterval = null;
 
@@ -3370,9 +3242,32 @@
             });
         }
 
+        // GEEK HUD Button Controller
+        const hudToggle = document.getElementById('hud-toggle');
+        const hudStatusText = document.getElementById('hud-status-text');
+
+        hudToggle.addEventListener('click', () => {
+            const isActive = document.body.classList.toggle('hud-active');
+            if (isActive) {
+                hudStatusText.textContent = "GEEK HUD: ON";
+                hudToggle.style.backgroundColor = "rgba(56, 189, 248, 0.15)";
+                hudToggle.style.borderColor = "#38bdf8";
+                hudToggle.style.boxShadow = "0 0 12px rgba(56, 189, 248, 0.4)";
+                synth.playHackerChime();
+                printLogLine("[HUD] Systems Diagnostics heads-up display initialized. Grid loaded.", '#38bdf8');
+                startTelemetryDials();
+            } else {
+                hudStatusText.textContent = "GEEK HUD: OFF";
+                hudToggle.style.backgroundColor = "";
+                hudToggle.style.borderColor = "";
+                hudToggle.style.boxShadow = "";
+                synth.playSweep(false);
+                stopTelemetryDials();
+            }
+        });
+
         // Interactive CLI Input Controller
         const userInput = document.getElementById('console-user-input');
-        let autoTypingActive = true;
 
         userInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
@@ -3456,6 +3351,7 @@
                 }
             }, 15000);
         }
+
 
         // ==========================================
         // DYNAMIC SVG SYSTEMS ARCHITECTURE GRAPH
