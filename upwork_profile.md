@@ -65,23 +65,23 @@ Below is a snapshot of live enterprise systems I have designed and deployed, lea
 
 ▲ PE / M&A Data Room Intelligence System & Diligence Harness
 *   Problem: Private Equity deal teams need to index and audit thousands of heterogeneous data room files. General RAG lacks structured diligence taxonomy, and LLMs suffer from silent hallucinations on financial sheets.
-*   Solution: Built an agentic PE Data Room RAG system with a native 12-section taxonomy and a three-role Planner-Generator-Evaluator harness. The harness runs an opposing-oracle pattern (differential testing) ensuring every claim in the generated diligence memo reconciles perfectly against Excel deal models or raw PDFs. Deployed a self-hosted Honcho memory architecture on Postgres for cross-session target tracking.
-*   Stack: Python, pdfplumber, Pinecone, hybrid metadata filters, Postgres, n8n, Claude 3.5 Sonnet.
+*   Solution: Built an agentic PE Data Room RAG system with a native 12-section taxonomy and a three-role Planner-Generator-Evaluator harness. The harness runs an opposing-oracle pattern (differential testing) ensuring every claim in the generated diligence memo reconciles perfectly against Excel deal models or raw PDFs. Deployed a self-hosted relational memory architecture on Postgres for cross-session target tracking.
+*   Stack: Python, pdfplumber, Pinecone, hybrid metadata filters, Postgres, automated workflow orchestration, Claude 3.5 Sonnet.
 
-▲ Musitrust LLC Conversational Distribution Agent
+▲ Conversational Music Distribution Agent
 *   Problem: Independent artists face massive manual friction when attempting to optimize, catalog, and distribute tracks across global music streaming platforms.
 *   Solution: Led a team of engineers to build a complex conversational agentic system that automates the entire music publishing lifecycle. The system takes raw audio files, dynamically optimizes audio parameters (sample rates, codecs), captures metadata taxonomy, verifies global copyright registries, and handles automated distribution to DSPs (Spotify, Apple Music) upon final user confirmation.
-*   Stack: Python, FFmpeg, Librosa, Copyright APIs, DSP Distribution Gateways, n8n, Claude.
+*   Stack: Python, FFmpeg, Librosa, Copyright APIs, DSP Distribution Gateways, workflow engine, Claude.
 
 ▲ ICBC Claims Enterprise AI Fraud Detector & Visualizer
 *   Problem: Claims adjusters needed to replace an expensive, high-false-positive commercial fraud solution with a custom, highly accurate model.
 *   Solution: Engineered an enterprise-grade AI claims fraud detection system coupled with a highly interactive network visualization dashboard. This dashboard allows claims investigators to map, trace, and audit complex fraud clusters and coordinate nodes.
 *   Stack: PyTorch, Python, Spark, NetworkX, Interactive JS network graphs, Tableau.
 
-▲ Portfolio Finance & Board Control Center (Acumatica ERP API Integration)
+▲ Portfolio Finance & Board Control Center (ERP API Integration)
 *   Problem: Platform ERP data and credit accounts lacked real-time API visibility, requiring manual exports.
-*   Solution: Built a secure two-part OAuth 2.0 provisioning flow inside Acumatica (Users Form SM201010 / Connected Apps SM303010) exposing a REST interface to downstream agents. Deployed an n8n dashboard reconciler that tracks cash flow, audit logs, and automatically generates board-prep slide packages.
-*   Stack: OAuth 2.0, REST APIs, n8n, PostgreSQL.
+*   Solution: Built a secure two-part OAuth 2.0 provisioning flow inside the ERP system exposing a REST interface to downstream agents. Deployed an automated dashboard reconciler that tracks cash flow, audit logs, and automatically generates board-prep slide packages.
+*   Stack: OAuth 2.0, REST APIs, Workflow Orchestration, PostgreSQL.
 
 ---
 Let’s schedule a brief discovery call to review your vertical workflow, map out your agentic systems architecture, and discuss how we can automate your engineering bottlenecks.
@@ -95,8 +95,8 @@ Let’s schedule a brief discovery call to review your vertical workflow, map ou
 
 ### Specialized Profile 1: AI & Multi-Agent Orchestration
 *   **Title:** `Principal AI Engineer | Custom Multi-Agent Workflows & LLMOps`
-*   **Skills:** `Large Language Models (LLMs)`, `Agentic Workflows`, `MLOps`, `LLMOps`, `LangGraph`, `CrewAI`, `Python`, `Vector Databases`, `n8n`, `API Design`
-*   **Description focus:** Emphasize the PE diligence RAG, Musitrust LLMOps pipeline, and paperclip control plane.
+*   **Skills:** `Large Language Models (LLMs)`, `Agentic Workflows`, `MLOps`, `LLMOps`, `LangGraph`, `CrewAI`, `Python`, `Vector Databases`, `Workflow Orchestration`, `API Design`
+*   **Description focus:** Emphasize the PE diligence RAG, Conversational Music Agent LLMOps pipeline, and agent fleet control plane.
 
 ### Specialized Profile 2: Data Engineering & Machine Learning Architect
 *   **Title:** `Data Architect & ML Engineer | Apache Spark, Databricks & Cloud Pipelines`

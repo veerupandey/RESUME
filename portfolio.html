@@ -2874,11 +2874,11 @@
         const consoleLines = [
             "[STATUS] Initializing FirstRatio Imagineering core protocols... [OK]",
             "[FLEET] Securing Tailscale private Wireguard network overlay... [OK]",
-            "[MEMORY] Honcho relational memory graph dream consolidated... [OK]",
+            "[MEMORY] Relational memory graph dream consolidated... [OK]",
             "[DIAGNOSTIC] Opposing-oracle evaluator differential check... [OK]",
-            "[DSP] Musitrust chatbot streaming distribution active... [OK]",
+            "[DSP] Conversational music distribution agent active... [OK]",
             "[NODE] Cloud Forge 03 processing text-embedding pipeline... [OK]",
-            "[CONTROL] Paperclip budget monitor: spending normalized... [OK]",
+            "[CONTROL] Fleet budget monitor: spending normalized... [OK]",
             "[MCP] Model Context Protocol provisioning secure API tokens... [OK]",
             "[IMAGINEERING] Welcome, Client. Ready to deploy magical AI attractions... [OK]"
         ];
@@ -3388,9 +3388,9 @@
                 latency: "45ms",
                 stack: "SaaS SOW / HRIS API Scoper / Conversion Metrics"
             },
-            "Musitrust LLC Music Distribution Agent": {
-                container: "fr-musitrust-chatbot:v4.2",
-                pod: "musitrust-master-1",
+            "Conversational Music Distribution Agent": {
+                container: "fr-music-chatbot:v4.2",
+                pod: "music-agent-master-1",
                 latency: "115ms",
                 stack: "Python Librosa & FFmpeg / Fingerprint API / Spotify DSP Gateway"
             },
@@ -3398,7 +3398,7 @@
                 container: "fr-rebaterunner-core:v1.2",
                 pod: "rebate-agent-2",
                 latency: "95ms",
-                stack: "n8n Workflow / Google Sheets API / LLM Entity Extraction"
+                stack: "Workflow Orchestration / Google Sheets API / LLM Entity Extraction"
             },
             "Salesforce to Postgres Bidirectional Sync (Tailscale / Docker)": {
                 container: "fr-salesforce-sync:v2.1",
@@ -3653,7 +3653,7 @@
             const cmd = command.startsWith('/') ? command : '/' + command;
             
             if (cmd === '/help') {
-                printLogLine("SYS CMD: /help, /diagnose, /dream, /sysinfo, /pod, /about, /musitrust", '#fbbf24');
+                printLogLine("SYS CMD: /help, /diagnose, /dream, /sysinfo, /pod, /about, /music", '#fbbf24');
             } else if (cmd === '/diagnose') {
                 printLogLine("[DIAG] Querying agent latency matrices... [OK]", '#34d399');
                 setTimeout(() => printLogLine("[DIAG] Tailscale Wireguard network routes secure (100.82.11.45)", '#38bdf8'), 200);
@@ -3663,7 +3663,7 @@
                     synth.playChime();
                 }, 600);
             } else if (cmd === '/dream') {
-                printLogLine("[DREAM] Consolidating memory graphs (Honcho database)...", '#a78bfa');
+                printLogLine("[DREAM] Consolidating memory graphs (self-hosted database)...", '#a78bfa');
                 setTimeout(() => printLogLine("[DREAM] Consolidating opposing-oracle adversarial evaluations...", '#f472b6'), 300);
                 setTimeout(() => {
                     printLogLine("[STATUS] Dream synced. Compounded sessions successfully committed to CLAUDE.md", '#34d399');
@@ -3674,15 +3674,15 @@
                 printLogLine("[SYSINFO] Env: Tailscale VPN overlay, Docker Swarm node-replicas", '#38bdf8');
                 printLogLine("[SYSINFO] Stacks: Python 3.11, Claude 4.0 Sonnet, postgresql-15", '#fbbf24');
             } else if (cmd === '/pod' || cmd === '/pods') {
-                printLogLine("[KUBECTL] GET PODS -n firstratio", '#c084fc');
+                printLogLine("[KUBECTL] GET PODS -n production", '#c084fc');
                 setTimeout(() => printLogLine("fr-diligence-rag-replica-3    1/1    Running    0    12d", '#34d399'), 150);
-                setTimeout(() => printLogLine("fr-musitrust-agent-master-1   1/1    Running    0    3d", '#34d399'), 300);
-                setTimeout(() => printLogLine("fr-paperclip-cron-scheduler   1/1    Running    0    24d", '#34d399'), 450);
+                setTimeout(() => printLogLine("fr-music-agent-master-1       1/1    Running    0    3d", '#34d399'), 300);
+                setTimeout(() => printLogLine("fr-fleet-cron-scheduler       1/1    Running    0    24d", '#34d399'), 450);
             } else if (cmd === '/about') {
                 printLogLine("Cofounder & Principal AI Engineer @ FirstRatio Intelligence", '#a78bfa');
                 printLogLine("Building high-performing systems, data, and platform teams.", '#38bdf8');
-            } else if (cmd === '/musitrust') {
-                printLogLine("[AGENT] Launching Musitrust music distribution pilot engine...", '#fbbf24');
+            } else if (cmd === '/music') {
+                printLogLine("[AGENT] Launching music distribution pilot engine...", '#fbbf24');
                 setTimeout(() => printLogLine("[DSP] Optimizing raw audio stream using Librosa & FFmpeg...", '#38bdf8'), 200);
                 setTimeout(() => printLogLine("[DSP] Distributing metadata payload to Spotify / Apple Music... [OK]", '#34d399'), 400);
             } else {
