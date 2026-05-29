@@ -10,31 +10,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Light Theme - Magical Pastel Starry Sky Theme */
-            --bg-primary: #f5f4fa;
+            /* Light Theme — Clean Professional Slate */
+            --bg-primary: #f8f9fb;
             --bg-card: #ffffff;
-            --bg-sidebar: #eae6f5;
-            --text-primary: #1e1b4b;   /* Deep indigo */
-            --text-secondary: #4338ca; /* Indigo-700 */
-            --text-muted: #6366f1;     /* Indigo-500 */
-            --border-color: #dcd7f5;
-            --bg-pill: #eef2ff;
-            --border-pill: #c7d2fe;
-            --accent-color: #7c3aed;   /* Magical violet */
-            --accent-hover: #6d28d9;
-            --accent-light: #f5f3ff;
-            --shadow-sm: 0 1px 2px 0 rgba(124, 58, 237, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(124, 58, 237, 0.05), 0 2px 4px -2px rgba(124, 58, 237, 0.05);
-            --shadow-lg: 0 10px 15px -3px rgba(124, 58, 237, 0.08), 0 4px 6px -4px rgba(124, 58, 237, 0.08);
-            --shadow-glow: 0 12px 40px -10px rgba(124, 58, 237, 0.15);
+            --bg-sidebar: #f1f3f7;
+            --text-primary: #0f172a;    /* Near-black slate */
+            --text-secondary: #334155;  /* Slate-700 — easy reading */
+            --text-muted: #64748b;      /* Slate-500 — subdued labels */
+            --border-color: #e2e8f0;
+            --bg-pill: #eff6ff;
+            --border-pill: #bfdbfe;
+            --accent-color: #2563eb;    /* Clean blue */
+            --accent-hover: #1d4ed8;
+            --accent-light: #dbeafe;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            --shadow-glow: 0 12px 40px -10px rgba(37, 99, 235, 0.12);
             --font-heading: 'Outfit', sans-serif;
             --font-body: 'Inter', sans-serif;
-            --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
-            --header-bg: rgba(245, 244, 250, 0.85);
-            --header-border: #cbd5e1;
-            
+            --gradient-accent: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --header-bg: rgba(248, 249, 251, 0.90);
+            --header-border: #e2e8f0;
+
             /* Category Accent Defaults */
-            --cat-color: #7c3aed;
+            --cat-color: #2563eb;
         }
 
         [data-theme="dark"] {
@@ -2096,7 +2096,7 @@
                 <!-- Project 2.1 -->
                 <div class="project-card" data-status="built">
                     <div class="project-title">
-                        Musitrust LLC Music Distribution Agent
+                        Music Distribution Platform (Flagship Agentic System)
                         <span class="status-badge built">Active Attraction (FirstRatio Flagship)</span>
                     </div>
                     <div class="project-meta-grid">
@@ -2125,7 +2125,7 @@
                         <span class="stack-pill">Audio Analysis Libraries (FFmpeg, Librosa)</span>
                         <span class="stack-pill">Copyright Fingerprinting APIs</span>
                         <span class="stack-pill">DSP Distribution Gateways</span>
-                        <span class="stack-pill">n8n Workflow Glue</span>
+                        <span class="stack-pill">Workflow Orchestration Layer</span>
                         <span class="stack-pill">Claude 4.0 Sonnet</span>
                     </div>
                     <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
@@ -2153,7 +2153,7 @@
                     <div class="stack-list">
                         <span class="stack-pill">React & Node.js</span>
                         <span class="stack-pill">Python Document OCR</span>
-                        <span class="stack-pill">n8n Orchestration</span>
+                        <span class="stack-pill">Workflow Orchestration</span>
                         <span class="stack-pill">Puppeteer (Cloud Browser Automation)</span>
                         <span class="stack-pill">Claude 4.0 Sonnet</span>
                     </div>
@@ -2271,7 +2271,7 @@
                 <!-- Project 3.2 -->
                 <div class="project-card" data-status="deployed">
                     <div class="project-title">
-                        Acumatica ERP API Integration
+                        ERP Platform API Integration & Automation
                         <span class="status-badge deployed">Active Attraction</span>
                     </div>
                     <div class="project-meta-grid">
@@ -2284,14 +2284,14 @@
                     <p class="project-text">A portfolio company platform admin had provisioned standard user login credentials for an automation job that required headless, programmatic API access. Financial ledger data, inventory tables, and customer records needed to flow securely into downstream diligence harnesses and executive reporting engines without UI scraping or manual CSV exports.</p>
                     
                     <div class="project-block-title">The Engineering (The Attraction)</div>
-                    <p class="project-text">Led a team of <span class="highlight-text">software and systems engineers</span> to design, deploy, and verify a highly secure two-part OAuth 2.0 provisioning flow: (1) Configured a dedicated service user inside the Acumatica Users form (SM201010) with role-scoped, read-only permissions across targeted financial modules; (2) Configured a Connected Application inside Connected Applications (SM303010) utilizing the Resource Owner Password Credentials flow.</p>
-                    <p class="project-text">A scheduled n8n workflow executes a daily token refresh via the Acumatica OAuth endpoint using the password grant type. The token is securely cached, exposing a clean REST API interface to downstream LLM agents. Extracted records flow directly into reporting systems.</p>
+                    <p class="project-text">Led a team of <span class="highlight-text">software and systems engineers</span> to design, deploy, and verify a highly secure two-part OAuth 2.0 provisioning flow: (1) Configured a dedicated service user with role-scoped, read-only permissions across targeted financial modules; (2) Configured a Connected Application utilizing the Resource Owner Password Credentials flow to expose a clean REST API to downstream agents.</p>
+                    <p class="project-text">A scheduled workflow agent executes a daily token refresh via the ERP OAuth endpoint. The token is securely cached, exposing a clean REST API interface to downstream LLM agents. Extracted records flow directly into reporting and board-prep systems.</p>
 
                     <div class="project-block-title">Core Magic (Tech Stack)</div>
                     <div class="stack-list">
-                        <span class="stack-pill">Acumatica Connected Applications API</span>
+                        <span class="stack-pill">ERP Connected Applications API (OAuth 2.0)</span>
                         <span class="stack-pill">OAuth 2.0 Resource Owner Credentials</span>
-                        <span class="stack-pill">n8n Credential Manager</span>
+                        <span class="stack-pill">Scheduled Token Refresh Agent</span>
                         <span class="stack-pill">Postgres</span>
                     </div>
                     <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
@@ -2389,7 +2389,7 @@
                     <div class="realm-banner-overlay"></div>
                     <div class="realm-banner-text">
                         <h3>Agent Fleet Core &amp; Memory Nexus</h3>
-                        <p>Distributed Tailscale nodes managed via Paperclip and backed by Honcho relational Postgres graphs.</p>
+                        <p>Distributed Tailscale nodes managed via a central control plane and backed by a self-hosted relational Postgres memory graph.</p>
                     </div>
                 </div>
 
@@ -2434,7 +2434,7 @@
                             </tr>
                             <tr>
                                 <td><strong>Coordination Plane</strong><br>(Servarica, 16 vCPU, 64 GB, 4TB SSD)</td>
-                                <td>Central relational storage: Postgres databases, Honcho memory, n8n, MinIO, Vaultwarden.</td>
+                                <td>Central relational storage: Postgres databases, self-hosted memory graph, object storage, and credential vault.</td>
                             </tr>
                             <tr>
                                 <td><strong>Cloudflare Workers</strong></td>
@@ -2473,7 +2473,7 @@
                 <!-- Project 5.2 -->
                 <div class="project-card" data-status="deployed">
                     <div class="project-title">
-                        Paperclip Control Plane Deployment
+                        Agent Fleet Control Plane
                         <span class="status-badge deployed">Active Attraction</span>
                     </div>
                     <div class="project-meta-grid">
@@ -2486,7 +2486,7 @@
                     <p class="project-text">Custom command-line orchestration scripts did not provide the robust organizational hierarchies, strict budget limits, full audit trails, or multi-company workspace isolation required to manage a fleet of agents across holding companies and portfolio company domains.</p>
                     
                     <div class="project-block-title">The Engineering (The Attraction)</div>
-                    <p class="project-text">Led a team of <span class="highlight-text">software and platform engineers</span> to design, build, and deploy **Paperclip** (Node.js orchestration server and React dashboard) as the central agent fleet control plane. The system establishes hierarchical organizational charts with clear delegation rules, tracks monthly per-agent budget caps (auto-pausing models on limit), schedules heartbeats for periodic agent wakeups, and records full tool-call tracing logs. Thin adapter shims translate the Paperclip heartbeat protocol, ensuring the control plane survives underlying agent framework upgrades.</p>
+                    <p class="project-text">Led a team of <span class="highlight-text">software and platform engineers</span> to design, build, and deploy a custom agent fleet control plane (Node.js orchestration server and React dashboard). The system establishes hierarchical organizational charts with clear delegation rules, tracks monthly per-agent budget caps (auto-pausing models on limit), schedules heartbeats for periodic agent wakeups, and records full tool-call tracing logs. Thin adapter shims ensure the control plane survives underlying agent framework upgrades.</p>
 
                     <div class="project-block-title">Core Magic (Tech Stack)</div>
                     <div class="stack-list">
@@ -2503,7 +2503,7 @@
                 <!-- Project 5.3 -->
                 <div class="project-card" data-status="deployed">
                     <div class="project-title">
-                        Honcho Self-Hosted Memory Architecture
+                        Self-Hosted Relational Memory Architecture
                         <span class="status-badge deployed">Active Attraction</span>
                     </div>
                     <div class="project-meta-grid">
@@ -2516,7 +2516,7 @@
                     <p class="project-text">Sensitive PE target transaction data, employee lists, and proprietary portfolio company dynamics cannot be stored on third-party SaaS memory provider servers. Furthermore, generic hosted memory providers lack a robust, scheduled memory consolidation and summarization loop.</p>
                     
                     <div class="project-block-title">The Engineering (The Attraction)</div>
-                    <p class="project-text">Architected, designed, and deployed a self-hosted **Honcho** memory architecture backed by Postgres. The system isolates targets using hard Workspace boundaries rather than per-agent containers. Implements observer/target peer models natively: each portfolio company represents a target peer, and each agent represents an observer. This creates distinct per-agent mental models, allowing contradictory conclusions to be automatically surfaced and resolved via a scheduled consolidation model (Dream) running every 8 hours.</p>
+                    <p class="project-text">Architected, designed, and deployed a self-hosted relational memory architecture backed by Postgres. The system isolates targets using hard Workspace boundaries rather than per-agent containers. Implements observer/target peer models natively: each portfolio company represents a target peer, and each agent represents an observer. This creates distinct per-agent mental models, allowing contradictory conclusions to be automatically surfaced and resolved via a scheduled consolidation pass (Dream loop) running every 8 hours.</p>
 
                     <table class="project-table">
                         <thead>
@@ -2547,7 +2547,7 @@
 
                     <div class="project-block-title">Core Magic (Tech Stack)</div>
                     <div class="stack-list">
-                        <span class="stack-pill">Honcho Open-Source Engine</span>
+                        <span class="stack-pill">Self-Hosted Memory Engine (OSS)</span>
                         <span class="stack-pill">Postgres</span>
                         <span class="stack-pill">Claude Opus 4.6 & Gemini Flash</span>
                         <span class="stack-pill">Memory Graph Consolidation</span>
@@ -2568,7 +2568,7 @@
                         <span class="meta-value">Four-layer authorization and identity proxy model</span>
                     </div>
                     <div class="project-block-title">The Illusion (The Challenge)</div>
-                    <p class="project-text">An autonomous agent fleet requires reliable, long-lived access to third-party SaaS systems (such as Slack, Notion, and Linear) without exposing raw user credentials or violating holdco/portco domain isolation boundaries.</p>
+                    <p class="project-text">An autonomous agent fleet requires reliable, long-lived access to third-party SaaS systems (such as Slack, Notion, and project management platforms) without exposing raw user credentials or violating holdco/portco domain isolation boundaries.</p>
                     
                     <div class="project-block-title">The Engineering (The Attraction)</div>
                     <p class="project-text">Designed and built a comprehensive **four-layer identity model**: (1) Human authentication; (2) Internal auth within owned systems; (3) Delegated external SaaS access; (4) Agent-to-agent workload identity. Uses WorkOS Pipes for major providers (Google, M365, Slack) isolating credentials by organizationId. Built a custom credential proxy on Cloudflare Workers utilizing encrypted token exchange to handle long-tail integrations. Injected scoped identities into portco data surfaces via OAuth-protected Model Context Protocol (MCP) servers.</p>
@@ -2587,7 +2587,7 @@
                 <!-- Project 5.5 -->
                 <div class="project-card" data-status="deployed">
                     <div class="project-title">
-                        Linear Workspace Architecture & Agent Orchestration
+                        Project Workspace Architecture & Agent Orchestration
                         <span class="status-badge deployed">Active Attraction</span>
                     </div>
                     <div class="project-meta-grid">
@@ -2600,7 +2600,7 @@
                     <p class="project-text">The central holding company Linear project management workspace had degenerated into chaos, consisting of empty teams, duplicate project structures, and orphaned issues. Agents lacked clean, addressable task routing, leading to execution boundary overlaps.</p>
                     
                     <div class="project-block-title">The Engineering (The Attraction)</div>
-                    <p class="project-text">Restructured the entire workspace into a clean six-team architecture mapped to distinct operating entities. Configured hard jurisdiction boundaries and injected custom markdown agent guidance files into active sessions. Built a dedicated "Linear Agent" that polls GraphQL, summarizes cross-venture patterns, and drafts weekly cycle planning updates. Deployed an n8n webhook bridge that routes issue updates dynamically back to the Paperclip control plane.</p>
+                    <p class="project-text">Restructured the entire project management workspace into a clean six-team architecture mapped to distinct operating entities. Configured hard jurisdiction boundaries and injected custom markdown agent guidance files into active sessions. Built a dedicated "Planning Agent" that polls the GraphQL layer, summarizes cross-venture patterns, and drafts weekly cycle planning updates. Deployed a webhook bridge that routes issue updates dynamically back to the fleet control plane.</p>
                     <button class="explore-blueprint-btn">Explore Blueprint Workspace</button>
                 </div>
             </div>
