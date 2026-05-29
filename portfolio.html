@@ -1082,10 +1082,17 @@
             transform: translateY(-2px);
         }
 
+        /* ==========================================
+           MOBILE RESPONSIVE SYSTEM — COMPREHENSIVE
+           ========================================== */
+
+        /* Tablet: 950px and below */
         @media (max-width: 950px) {
             .main-container {
                 grid-template-columns: 1fr;
                 gap: 24px;
+                margin: 24px auto;
+                padding: 0 18px;
             }
             aside {
                 display: none;
@@ -1095,20 +1102,327 @@
                 margin-bottom: 8px;
             }
             .hero-banner {
-                padding: 24px;
+                padding: 28px 24px;
             }
             .blueprint-layout-grid {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
             .blueprint-graphic-panel {
-                height: 250px;
+                height: 260px;
             }
             .blueprint-specs-panel {
                 height: auto;
                 overflow-y: visible;
+                padding-right: 0;
             }
         }
+
+        /* Mobile: 768px and below */
+        @media (max-width: 768px) {
+            /* Header collapses to compact row */
+            .header-container {
+                padding: 0 16px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .logo-group h1 {
+                font-size: 18px;
+            }
+            .logo-group p {
+                font-size: 10px;
+            }
+            .header-actions {
+                gap: 6px;
+            }
+            .sound-btn span#sound-status-text,
+            #hud-status-text {
+                display: none; /* Hide text labels on mobile, keep icons */
+            }
+            .sound-btn {
+                padding: 0 10px;
+                height: 34px;
+            }
+            .back-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+
+            /* Main container */
+            .main-container {
+                padding: 0 14px;
+                margin: 16px auto;
+                padding-bottom: 80px; /* Leave space for mobile nav bar */
+            }
+
+            /* Hero banner */
+            .hero-banner {
+                padding: 22px 18px;
+                border-radius: 12px;
+            }
+            .hero-content h2 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+            .hero-content p {
+                font-size: 13.5px;
+                margin-bottom: 14px;
+            }
+            .hero-glass-box {
+                padding: 16px;
+            }
+            .hero-glass-box p {
+                font-size: 13px;
+            }
+
+            /* Console */
+            .blueprint-console {
+                padding: 12px;
+            }
+            .console-body {
+                height: 90px;
+            }
+            .console-line {
+                white-space: pre-wrap;
+                word-break: break-word;
+                overflow: visible;
+                font-size: 11px;
+            }
+            #console-user-input {
+                font-size: 11px;
+            }
+
+            /* Synth panel — stack vertically */
+            .synth-control-panel {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
+            }
+            .synth-control-panel > div {
+                width: 100%;
+            }
+            .synth-control-panel input[type="range"] {
+                max-width: 100% !important;
+            }
+
+            /* Stats grid — 2 columns */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .stat-num {
+                font-size: 24px;
+            }
+            .stat-label {
+                font-size: 12px;
+            }
+            .stat-sub {
+                font-size: 9.5px;
+            }
+
+            /* Toolbar / filter bar */
+            .toolbar {
+                padding: 14px 16px;
+                border-radius: 10px;
+            }
+            .filter-pills {
+                gap: 6px;
+            }
+            .filter-pill {
+                font-size: 11.5px;
+                padding: 5px 10px;
+            }
+
+            /* Category headers */
+            .category-header {
+                font-size: 16px;
+            }
+
+            /* Realm banners */
+            .realm-banner-card {
+                height: 160px;
+            }
+            .realm-banner-text {
+                left: 18px;
+                bottom: 18px;
+                max-width: 75%;
+            }
+            .realm-banner-text h3 {
+                font-size: 17px;
+            }
+            .realm-banner-text p {
+                font-size: 12px;
+            }
+
+            /* Project cards */
+            .project-card {
+                padding: 18px 16px;
+                border-radius: 10px;
+                margin-bottom: 16px;
+            }
+            .project-title {
+                font-size: 15px;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .project-title .status-badge {
+                font-size: 9.5px;
+            }
+            .project-meta-grid {
+                font-size: 12px;
+            }
+            .project-text {
+                font-size: 13px;
+            }
+            .project-card li {
+                font-size: 13px;
+            }
+            .project-table {
+                font-size: 11.5px;
+            }
+            .project-table th,
+            .project-table td {
+                padding: 8px 10px;
+            }
+
+            /* Blueprint modal */
+            .blueprint-modal {
+                padding: 16px 12px;
+            }
+            .blueprint-workspace {
+                padding: 22px 18px;
+            }
+            .blueprint-workspace-header h2 {
+                font-size: 20px;
+            }
+            .blueprint-graphic-panel {
+                height: 200px;
+            }
+            .close-modal {
+                right: 14px;
+                top: 14px;
+                width: 32px;
+                height: 32px;
+            }
+
+            /* Top-btn */
+            .top-btn {
+                bottom: 74px; /* above mobile nav */
+                right: 18px;
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+            }
+        }
+
+        /* Small phones: 480px and below */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0 12px;
+            }
+            .logo-group h1 {
+                font-size: 16px;
+            }
+            .main-container {
+                padding: 0 12px;
+                padding-bottom: 80px;
+            }
+            .hero-banner {
+                padding: 16px 14px;
+            }
+            .hero-content h2 {
+                font-size: 17px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .stat-card {
+                padding: 14px 10px;
+            }
+            .stat-num {
+                font-size: 22px;
+            }
+            .realm-banner-card {
+                height: 140px;
+            }
+            .realm-banner-text h3 {
+                font-size: 15px;
+            }
+            .project-card {
+                padding: 14px 12px;
+            }
+            .filter-pill {
+                font-size: 10.5px;
+                padding: 4px 8px;
+            }
+            .blueprint-workspace {
+                padding: 16px 14px;
+            }
+        }
+
+        /* ==========================================
+           MOBILE BOTTOM NAVIGATION BAR
+           (Replaces the hidden desktop sidebar)
+           ========================================== */
+        .mobile-nav-bar {
+            display: none;
+        }
+
+        @media (max-width: 950px) {
+            .mobile-nav-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 200;
+                background-color: var(--header-bg);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-top: 1px solid var(--header-border);
+                box-shadow: 0 -4px 24px rgba(0,0,0,0.35);
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                padding: 0;
+            }
+            .mobile-nav-bar::-webkit-scrollbar {
+                display: none;
+            }
+            .mobile-nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3px;
+                flex: 0 0 auto;
+                min-width: 72px;
+                padding: 8px 6px 10px;
+                text-decoration: none;
+                color: var(--text-muted);
+                font-family: var(--font-heading);
+                font-size: 8.5px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+                transition: color 0.2s, background-color 0.2s;
+                border-bottom: 3px solid transparent;
+                white-space: nowrap;
+            }
+            .mobile-nav-item:hover,
+            .mobile-nav-item.active {
+                color: var(--accent-color);
+                border-bottom-color: var(--accent-color);
+                background-color: var(--bg-pill);
+            }
+            .mobile-nav-icon {
+                font-size: 18px;
+                line-height: 1;
+            }
+        }
+
+
 
         /* GEEK SYSTEMS HUD CUSTOM DIALS */
         .hud-specs {
@@ -2482,11 +2796,44 @@
     <!-- Back to top button -->
     <a href="#top" class="top-btn" aria-label="Back to top">▲</a>
 
+    <!-- Mobile Bottom Navigation Bar (visible on ≤950px) -->
+    <nav class="mobile-nav-bar" id="mobile-nav-bar" aria-label="Mobile category navigation">
+        <a href="#pe-diligence" class="mobile-nav-item active" data-section="pe-diligence">
+            <span class="mobile-nav-icon">🔮</span>
+            PE Intel
+        </a>
+        <a href="#operations" class="mobile-nav-item" data-section="operations">
+            <span class="mobile-nav-icon">⚙️</span>
+            Ops
+        </a>
+        <a href="#finance-erp" class="mobile-nav-item" data-section="finance-erp">
+            <span class="mobile-nav-icon">💰</span>
+            Finance
+        </a>
+        <a href="#industrial" class="mobile-nav-item" data-section="industrial">
+            <span class="mobile-nav-icon">🏭</span>
+            Industrial
+        </a>
+        <a href="#infrastructure" class="mobile-nav-item" data-section="infrastructure">
+            <span class="mobile-nav-icon">🛰️</span>
+            Fleet
+        </a>
+        <a href="#reusable-skills" class="mobile-nav-item" data-section="reusable-skills">
+            <span class="mobile-nav-icon">🛠️</span>
+            Tooling
+        </a>
+        <a href="#efficiency" class="mobile-nav-item" data-section="efficiency">
+            <span class="mobile-nav-icon">📊</span>
+            SaaS
+        </a>
+    </nav>
+
     <script>
         // ==========================================
         // DYNAMIC INTERACTIVE PARTICLES (PIXIE DUST)
         // ==========================================
         document.addEventListener('mousemove', (e) => {
+
             if (window.innerWidth < 768) return; // Performance check
             
             // Limit frequency of particle spawn
@@ -3536,6 +3883,57 @@
                 printLogLine(`[SYNTH] Carrier waveform adjusted to: ${wave.toUpperCase()}`, '#a78bfa');
             });
         });
+
+        // ==========================================
+        // MOBILE BOTTOM NAV — ACTIVE STATE ON SCROLL
+        // ==========================================
+        (function() {
+            const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+            const sectionIds = ['pe-diligence', 'operations', 'finance-erp', 'industrial', 'infrastructure', 'reusable-skills', 'efficiency'];
+
+            function setMobileActiveNav(sectionId) {
+                mobileNavItems.forEach(item => {
+                    const isCurrent = item.getAttribute('data-section') === sectionId;
+                    item.classList.toggle('active', isCurrent);
+                });
+            }
+
+            // Use IntersectionObserver to track which section is visible
+            const observerOptions = {
+                root: null,
+                rootMargin: '-30% 0px -60% 0px',
+                threshold: 0
+            };
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setMobileActiveNav(entry.target.id);
+                    }
+                });
+            }, observerOptions);
+
+            sectionIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) sectionObserver.observe(el);
+            });
+
+            // Smooth scroll with offset for sticky header + mobile nav
+            mobileNavItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = item.getAttribute('data-section');
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        const offset = window.innerWidth <= 950 ? 90 : 110;
+                        const top = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                    setMobileActiveNav(targetId);
+                });
+            });
+        })();
     </script>
+
 </body>
 </html>
